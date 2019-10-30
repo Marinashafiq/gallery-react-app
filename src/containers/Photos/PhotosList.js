@@ -68,15 +68,6 @@ class PhotosList extends React.Component {
     }
 
 
-    renderCreate() {
-        if (this.props.isSignedIn) {
-            return (
-                <div style={{ textAlign: 'right' }} className="right floated content">
-                    <Link to="/streams/new" className="ui button positive">Create Stream</Link>
-                </div>
-            )
-        }
-    }
 
     render() {
         console.log(this.props.photos);
