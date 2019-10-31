@@ -6,61 +6,18 @@ import { requestPhotos } from '../../store/actions/index';
 class PhotosList extends React.Component {
 
     componentDidMount() {
-        this.props.requestStreams();
+        console.log(this.props);
+        this.props.requestPhotos();
     }
 
-    renderAdmin(stream) {
-        if (stream.userId === this.props.currentUserId) {
-            console.log("trueee")
+    renderPhotosList() {
+        return this.props.photos.map(photo => {
+            console.log(photo.id);
             return (
-                // <div className="extra content">
-                //     <div className="ui two buttons">
-                //         <Link to={`/streams/edit/${stream.id}`} className="ui green basic button">
-                //             Edit
-                //     </Link>
-                //         <Link to={`/streams/delete/${stream.id}`} className="ui red basic button">
-                //             Delete
-                //     </Link>
-
-                //     </div>
-                // </div>
-                <div className="right floated content">
-                    <Link to={`/streams/edit/${stream.id}`} className="ui button primary">
-                        Edit
-                    </Link>
-                    <Link to={`/streams/delete/${stream.id}`} className="ui button negative">
-                        Delete
-                    </Link>
-                </div>
-            );
-        }
-
-    }
-
-    renderStreamList() {
-        return this.props.streams.map(stream => {
-            console.log(stream.id);
-            return (
-                // <div className="column" key={stream.id}>
-                //     <div className="ui link card">
-                //         <div className="content">
-                //             <div className="header">
-                //                 <Link to={`/streams/${stream.id}`} className="header">{stream.title}</Link>
-                //             </div>
-                //             {/* <div className="meta">Scientist</div> */}
-                //             <div className="description">
-                //                 {stream.description}
-                //             </div>
-                //             {this.renderAdmin(stream)}
-                //         </div>
-                //     </div>
-                // </div>
-                <div className="item" key={stream.id}>
-                    {this.renderAdmin(stream)}
-                    <i className="large divided middle aligned icon camera" />
-                    <div className="content">
-                        <Link to={`/streams/${stream.id}`} className="header">{stream.title}</Link>
-                        <div className="description">{stream.description}</div>
+                <div  key={photo.id}>
+                    <div>
+                        <img src={photo.urls.full} height='100' width='100' />
+                        {photo.id}
                     </div>
                 </div>
             )
@@ -74,6 +31,7 @@ class PhotosList extends React.Component {
         return (
             <div>
               <h1>Photos List</h1>
+              {this.renderPhotosList()}
             </div>
         )
     }

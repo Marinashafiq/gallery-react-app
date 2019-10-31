@@ -8,7 +8,7 @@ import api from "../../network/apis";
 
 function* getPhotos() {
     try {
-        const response = yield call(api.getPhotosAPI);
+        const response = yield call(api.getPhotos);
         console.log(response);
         yield put({ type: RECEIVE_PHOTOS, payload: response.data });
     } catch (err) {
