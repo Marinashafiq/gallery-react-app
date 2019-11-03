@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { requestPhotos } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
-import { Container, Row, Col } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card'
-import CardColumns from 'react-bootstrap/CardColumns'
+import { Container } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import CardColumns from 'react-bootstrap/CardColumns';
+import Header from '../../components/header/Header';
+
+
 
 class PhotosList extends React.Component {
     
@@ -22,7 +25,15 @@ class PhotosList extends React.Component {
             console.log(photo.created_at);
             return (
 
-                    <GalleryCard  key={photo.id} url={photo.urls.full} name={photo.id} created_at={photo.created_at} />
+                <GalleryCard  
+                    key={photo.id} 
+                    url={photo.urls.full} 
+                    name={photo.id} 
+                    created_at={photo.created_at} 
+                    description = {photo.description}
+                    likes = {photo.likes}
+                    user = {photo.user}
+                />
               
             )
         })
@@ -40,9 +51,9 @@ class PhotosList extends React.Component {
         console.log(this.props.photos);
         return (
             <div>
-                <h1>Photos List</h1>
-                <Container>
-                    <CardColumns>
+               <Header />
+                <Container className="my-5">
+                    <CardColumns className="my-5">
                         {this.renderPhotosList()}
                     </CardColumns>
                 </Container>

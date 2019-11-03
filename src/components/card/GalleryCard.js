@@ -1,20 +1,24 @@
 import React from 'react' ;
 import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
 
 const GalleryCard = (props) =>{
     return(
        <div>
             <Card className="border-0 shadow mb-3">
                 <Card.Img variant="top" src={props.url} />
-                <Card.Body>
-                    <Card.Title>{props.name}</Card.Title>
+                <Card.Body>                                       
+                    <Card.Title>
+                    <Image src={props.user.profile_image.small} roundedCircle />
+                    <small className="mx-2">{props.user.name}</small>
+                    </Card.Title>                   
                     <Card.Text>
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.
+                        {props.description}
                     </Card.Text>
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer className="d-flex justify-content-between">
                     <small className="text-muted">{props.created_at}</small>
+                    <small className="text-muted">{props.likes}</small>
                 </Card.Footer>
             </Card>
        </div>
