@@ -7,22 +7,22 @@ import { Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Header from '../../components/header/Header';
-
+import Button from 'react-bootstrap/Button';
+import '../../components/search/Search.scss';
 
 
 class PhotosList extends React.Component {
     
 
     componentDidMount() {
-        console.log(this.props);
-        this.props.requestPhotos();
+        console.log("props" , this.props);
+        this.props.requestPhotos(1);
     }
 
     renderPhotosList() {
+        console.log(this.props.photos);
         return this.props.photos.map(photo => {
-            console.log(photo.created_at);
             photo.created_at = this.convertTime(photo.created_at);
-            console.log(photo.created_at);
             return (
 
                 <GalleryCard  
@@ -45,6 +45,28 @@ class PhotosList extends React.Component {
        return created_at_date;       
     }
 
+    renderPaginationControls(){
+        return(
+            <div className="d-flex justify-content-between">
+                <Button variant="outline-warning" onClick={this.getPrev} className="border-raduis-3 text-white px-5">Prev</Button>
+                <Button variant="outline-warning" onClick={this.getNext} className="border-raduis-3 text-white px-5">Next</Button>
+            </div>
+        )
+    }
+
+    getNext = () => {    
+        console.log(this.props.current_page);
+        let nextPage = this.props.current_page + 1 ;
+        console.log(nextPage);
+        this.props.requestPhotos(nextPage);    
+    }
+
+    getPrev = () =>{        
+        console.log(this.props.current_page);
+        let prevPage = this.props.current_page - 1 ;
+        console.log(prevPage);
+        this.props.requestPhotos(prevPage)
+    }
 
 
     render() {
@@ -56,6 +78,7 @@ class PhotosList extends React.Component {
                     <CardColumns className="my-5">
                         {this.renderPhotosList()}
                     </CardColumns>
+                    {this.renderPaginationControls()}
                 </Container>
 
             </div>
@@ -64,8 +87,10 @@ class PhotosList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        photos: Object.values(state.photos)
+        photos: Object.values(state.photos),
+        current_page : state.currentPage
     }
 }
 

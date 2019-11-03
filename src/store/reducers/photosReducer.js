@@ -8,7 +8,7 @@ export default (state = {}, action) => {
     console.log(action)
     switch (action.type) {
         case RECEIVE_PHOTOS:
-            return { ...state, ..._.mapKeys(action.payload, 'id') };
+            return { ...state, ..._.mapKeys(action.payload, 'id')};
         // case NEW_STREAM:
         //     return { ...state, [action.payload.id]: action.payload };
         // case RECEIVE_STREAM:
@@ -21,3 +21,4 @@ export default (state = {}, action) => {
             return state;
     }
 }
+
