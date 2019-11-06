@@ -14,7 +14,7 @@ class PhotosList extends React.Component {
     
 
     componentDidMount() {
-        console.log("props" , this.props);
+        console.log("props" , this.props.photos);
         this.props.requestPhotos(1);
     }
 
@@ -67,7 +67,7 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         photos: Object.values(state.photos),
-        current_page : state.currentPage
+        currentPage : state.currentPage
     }
 }
 

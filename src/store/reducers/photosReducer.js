@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import {
     RECEIVE_PHOTOS,
 } from '../actions/types';
@@ -8,7 +6,8 @@ export default (state = {}, action) => {
     console.log(action)
     switch (action.type) {
         case RECEIVE_PHOTOS:
-            return { ...state, ..._.mapKeys(action.payload, 'id')};
+            console.log("PHOTOOOOS");
+            return { ...state, ...action.payload};
         // case NEW_STREAM:
         //     return { ...state, [action.payload.id]: action.payload };
         // case RECEIVE_STREAM:

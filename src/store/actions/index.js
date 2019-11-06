@@ -2,12 +2,15 @@ import {
     RECEIVE_PHOTOS , 
     REQUEST_PHOTOS  , 
     REQUEST_PAGINATION , 
-    RECEIVE_PAGINATION } 
+    REQUEST_SEARCH_PHOTOS , 
+    RECEIVE_SEARCH_PHOTOS} 
     from './types';
 
-export const requestPhotos = () => {
+export const requestPhotos = (page) => {
+    console.log(page);
     return {
         type: REQUEST_PHOTOS,
+        payload : page
     }
 };
 
@@ -18,16 +21,26 @@ export const receivePhotos = (data) => {
     }
 };
 
-export const requestPagination = () => {
+export const requestPagination = (page) => {
     return {
         type: REQUEST_PAGINATION,
+        payload : page
     }
 };
 
-export const receivePagination = (page) => {
-    console.log("action receive" ,page);
+export const requestSearchPhotos = (keyword) => {
     return {
-        type: RECEIVE_PAGINATION, 
-        payload: page
+        type: REQUEST_SEARCH_PHOTOS,
+        payload : keyword
     }
 };
+
+
+export const receiveSearchPhotos = (keyword) => {
+    return {
+        type: RECEIVE_SEARCH_PHOTOS,
+        payload : keyword
+    }
+};
+
+

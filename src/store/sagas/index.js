@@ -11,24 +11,12 @@ import api from "../../network/apis";
 
 function* getPhotosList(action) {
     try {
+        console.log(action)
         console.log("try request")
-        const response = yield call(api.getPhotos , 1);
+        const response = yield call(api.getPhotos , action.payload);
         console.log(response);
-        yield put({ type: RECEIVE_PHOTOS, payload: response.data });
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-function* getPaging(action) {
-    try {
-        console.log(action);
-        const  page = action.payload;
-        console.log(page);
-        console.log("try request")
-        const response = yield call(api.getPhotos , page);
-        console.log(response);
-        yield put({ type: RECEIVE_PAGINATION, payload: response.data });
+        console.log(response.headers['x-total'])
+        yield put({ type: RECEIVE_PHOTOS, payload: response.data , totalPages : response.headers['x-total']});
     } catch (err) {
         console.log(err);
     }
@@ -38,6 +26,4 @@ function* getPaging(action) {
 // Get the response of the latest request(s) 
 export default function* mySaga() {
     yield takeLatest(REQUEST_PHOTOS, getPhotosList);
-    yield takeLatest(REQUEST_PAGINATION, getPaging);
-
 }
