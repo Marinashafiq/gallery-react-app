@@ -1,5 +1,5 @@
 import {
-    RECEIVE_PHOTOS,
+    RECEIVE_PHOTOS,RECEIVE_SEARCH_PHOTOS
 } from '../actions/types';
 
 export default (state = {}, action) => {
@@ -7,7 +7,10 @@ export default (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PHOTOS:
             console.log("PHOTOOOOS");
-            return { ...state, ...action.payload};
+            return { ...state, ...action.payload };
+        case RECEIVE_SEARCH_PHOTOS :
+            console.log("SEARCH PHOTOOOOS");
+            return { ...state, ...action.payload };
         // case NEW_STREAM:
         //     return { ...state, [action.payload.id]: action.payload };
         // case RECEIVE_STREAM:

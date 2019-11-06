@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
-import { requestPagination , requestPhotos } from '../../store/actions/index';
+import { requestPagination , requestPhotos , requestSearchPhotos } from '../../store/actions/index';
 class Pagination extends React.Component {
 
 
@@ -42,4 +42,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps , {requestPagination , requestPhotos})(Pagination) ;
+export default connect(mapStateToProps , {requestPagination , requestPhotos , requestSearchPhotos})(Pagination) ;

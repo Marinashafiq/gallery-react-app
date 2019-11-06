@@ -10,7 +10,8 @@ export const requestPhotos = (page) => {
     console.log(page);
     return {
         type: REQUEST_PHOTOS,
-        payload : page
+        payload : page ,
+        isKeyword : false
     }
 };
 
@@ -28,19 +29,24 @@ export const requestPagination = (page) => {
     }
 };
 
-export const requestSearchPhotos = (keyword) => {
+export const requestSearchPhotos = (page , keyword) => {
     return {
         type: REQUEST_SEARCH_PHOTOS,
-        payload : keyword
+        payload : {
+            page , 
+            keyword , 
+            isKeyword : true
+        }
     }
 };
 
 
-export const receiveSearchPhotos = (keyword) => {
-    return {
-        type: RECEIVE_SEARCH_PHOTOS,
-        payload : keyword
-    }
-};
+// export const receiveSearchPhotos = (data) => {
+//     console.log(data)
+//     return {
+//         type: RECEIVE_SEARCH_PHOTOS,
+//         payload: { data :  data.result , isKeyword : true  } ,   
+//     }
+// };
 
 
