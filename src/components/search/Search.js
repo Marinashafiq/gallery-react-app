@@ -4,7 +4,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import './Search.scss';
 import { connect } from 'react-redux';
-import { requestSearchPhotos } from '../../store/actions/index';
+import { requestSearchPhotos , requestPhotos } from '../../store/actions';
+
 
 class Search extends React.Component {
 
@@ -20,10 +21,18 @@ class Search extends React.Component {
         this.setState({
             keyword : e.target.value
         })
+        if(e.target.value == ""){
+            console.log("EMPTYYYYY");
+            this.setState({
+                keyword : ""
+            })
+            this.props.requestPhotos(1);
+        }
         console.log(this.state);
     }
 
     onSubmit = (e) => {
+        console.log(this.props);
         e.preventDefault();
         console.log(this.state.keyword)
         this.props.requestSearchPhotos(this.props.currentPage,this.state.keyword);
@@ -58,4 +67,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps , {requestSearchPhotos})(Search);
+export default connect(mapStateToProps , {requestSearchPhotos , requestPhotos})(Search);

@@ -6,18 +6,35 @@ class Pagination extends React.Component {
 
 
     getNext = () => {    
+        console.log(this.props);
         console.log(this.props.currentPage);
         let nextPage = this.props.currentPage + 1 ;
         console.log(nextPage);
         this.props.requestPagination(nextPage);
-        this.props.requestPhotos(nextPage);
+        if(this.props.pagingType === 'photos'){
+            console.log("next photos")
+
+            this.props.requestPhotos(nextPage);
+        }
+        else if(this.props.pagingType === 'search_photos'){
+            console.log("search photos next")
+            this.props.requestSearchPhotos(nextPage , this.props.searchKeyword.keyword);
+        }
     }
 
     getPrev = () =>{        
       if(this.props.currentPage > 1 ) {
         let prevPage = this.props.currentPage - 1 ;
         this.props.requestPagination(prevPage);
-        this.props.requestPhotos(prevPage);
+        if(this.props.pagingType === 'photos'){
+            console.log("prev photos")
+            this.props.requestPhotos(prevPage);
+        }
+        else if(this.props.pagingType === 'search_photos'){
+            console.log("search photos prev")
+
+            this.props.requestSearchPhotos(prevPage , this.props.searchKeyword.keyword);
+        }
       }
     }
 
@@ -38,7 +55,9 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         photos: Object.values(state.photos) ,
-        currentPage : state.currentPage
+        currentPage : state.currentPage,
+        pagingType : state.pagingType,
+        searchKeyword : state.searchKeyword
     }
 }
 

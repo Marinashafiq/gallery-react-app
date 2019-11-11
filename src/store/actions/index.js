@@ -3,7 +3,8 @@ import {
     REQUEST_PHOTOS  , 
     REQUEST_PAGINATION , 
     REQUEST_SEARCH_PHOTOS , 
-    RECEIVE_SEARCH_PHOTOS} 
+    RECEIVE_SEARCH_PHOTOS , 
+    REQUEST_PAGINATION_TYPE} 
     from './types';
 
 export const requestPhotos = (page) => {
@@ -11,7 +12,6 @@ export const requestPhotos = (page) => {
     return {
         type: REQUEST_PHOTOS,
         payload : page ,
-        isKeyword : false
     }
 };
 
@@ -35,10 +35,18 @@ export const requestSearchPhotos = (page , keyword) => {
         payload : {
             page , 
             keyword , 
-            isKeyword : true
         }
     }
 };
+
+
+export const requestPagingType = (pageType) => {
+    return {
+        type: REQUEST_PAGINATION_TYPE,
+        payload : pageType
+    }
+};
+
 
 
 // export const receiveSearchPhotos = (data) => {
