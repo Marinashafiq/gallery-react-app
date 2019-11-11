@@ -1,14 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
-import { requestPhotos } from '../../store/actions/index';
+import { requestPhotos  } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
-import { Container } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import CardColumns from 'react-bootstrap/CardColumns';
-import Header from '../../components/header/Header';
 import '../../components/search/Search.scss';
-import Pagination from '../../components/pagination/Pagination';
+
 
 class PhotosList extends React.Component {
     
@@ -18,13 +13,12 @@ class PhotosList extends React.Component {
         this.props.requestPhotos(1);
     }
 
-    renderPhotosList() {
+    renderPhotosList = () => {
         console.log(this.props.photos);
         return this.props.photos.map(photo => {
             photo.created_at = this.convertTime(photo.created_at);
             return (
-
-                <GalleryCard  
+                    <GalleryCard  
                     key={photo.id} 
                     url={photo.urls.full} 
                     name={photo.id} 
@@ -32,8 +26,7 @@ class PhotosList extends React.Component {
                     description = {photo.description}
                     likes = {photo.likes}
                     user = {photo.user}
-                />
-              
+                /> 
             )
         })
     }
@@ -50,14 +43,7 @@ class PhotosList extends React.Component {
         console.log(this.props.photos);
         return (
             <div>
-               <Header />
-                <Container className="my-5">
-                    <CardColumns className="my-5">
-                        {this.renderPhotosList()}
-                    </CardColumns>
-                    <Pagination />
-                </Container>
-
+                {this.renderPhotosList()}
             </div>
         )
     }
@@ -67,7 +53,8 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         photos: Object.values(state.photos),
-        currentPage : state.currentPage
+        currentPage : state.currentPage ,
+        pagingType : state.pagingType
     }
 }
 

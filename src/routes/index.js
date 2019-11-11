@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import history from './history';
-const PhotosList = lazy(() => import('../containers/Photos/PhotosList'));
+const Home = lazy(() => import('../containers/Home/Home'));
 
 export const Routes = () =>{
     return(
@@ -9,7 +9,7 @@ export const Routes = () =>{
             <div>
             <Suspense fallback={<h1>Still Loading…</h1>}>
                 <Switch>
-                    <PhotosList path="/" exact />
+                    <Home path="/" exact />
                 </Switch>
             </Suspense>
             </div>

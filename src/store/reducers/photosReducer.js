@@ -5,11 +5,14 @@ import {
 export default (state = {}, action) => {
     console.log(action)
     switch (action.type) {
-        case RECEIVE_PHOTOS || RECEIVE_COLLECTIONS :
+        case RECEIVE_PHOTOS :
             console.log("PHOTOOOOS");
             return { ...state, ...action.payload };
         case RECEIVE_SEARCH_PHOTOS || REQUEST_SEARCH_COLLECTIONS :
             console.log("SEARCH PHOTOOOOS");
+            return { ...state, ...action.payload };
+        case RECEIVE_COLLECTIONS :
+            console.log("COLLECTIONS");
             return { ...state, ...action.payload };
         // case NEW_STREAM:
         //     return { ...state, [action.payload.id]: action.payload };
