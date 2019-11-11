@@ -1,10 +1,13 @@
 import { 
     RECEIVE_PHOTOS , 
     REQUEST_PHOTOS  , 
-    REQUEST_PAGINATION , 
     REQUEST_SEARCH_PHOTOS , 
-    RECEIVE_SEARCH_PHOTOS , 
-    REQUEST_PAGINATION_TYPE} 
+    REQUEST_PAGINATION , 
+    REQUEST_PAGINATION_TYPE , 
+    RECEIVE_COLLECTIONS ,
+    REQUEST_COLLECTIONS , 
+    REQUEST_SEARCH_COLLECTIONS
+} 
     from './types';
 
 export const requestPhotos = (page) => {
@@ -22,12 +25,6 @@ export const receivePhotos = (data) => {
     }
 };
 
-export const requestPagination = (page) => {
-    return {
-        type: REQUEST_PAGINATION,
-        payload : page
-    }
-};
 
 export const requestSearchPhotos = (page , keyword) => {
     return {
@@ -40,21 +37,44 @@ export const requestSearchPhotos = (page , keyword) => {
 };
 
 
+
+export const requestCollection = (page) => {
+    console.log(page);
+    return {
+        type: REQUEST_COLLECTIONS,
+        payload : page ,
+    }
+};
+
+export const receiveCollections = (data) => {
+    return {
+        type: RECEIVE_COLLECTIONS, 
+        payload: data       
+    }
+};
+
+export const requestSearchCollections = (page , keyword) => {
+    return {
+        type: REQUEST_SEARCH_COLLECTIONS,
+        payload : {
+            page , 
+            keyword 
+        }
+    }
+};
+
+export const requestPagination = (page) => {
+    return {
+        type: REQUEST_PAGINATION,
+        payload : page
+    }
+};
+
+
 export const requestPagingType = (pageType) => {
     return {
         type: REQUEST_PAGINATION_TYPE,
         payload : pageType
     }
 };
-
-
-
-// export const receiveSearchPhotos = (data) => {
-//     console.log(data)
-//     return {
-//         type: RECEIVE_SEARCH_PHOTOS,
-//         payload: { data :  data.result , isKeyword : true  } ,   
-//     }
-// };
-
 

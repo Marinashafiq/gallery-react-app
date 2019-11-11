@@ -1,14 +1,14 @@
 import {
-    RECEIVE_PHOTOS,RECEIVE_SEARCH_PHOTOS
+    RECEIVE_PHOTOS,RECEIVE_SEARCH_PHOTOS , RECEIVE_COLLECTIONS , REQUEST_SEARCH_COLLECTIONS
 } from '../actions/types';
 
 export default (state = {}, action) => {
     console.log(action)
     switch (action.type) {
-        case RECEIVE_PHOTOS:
+        case RECEIVE_PHOTOS || RECEIVE_COLLECTIONS :
             console.log("PHOTOOOOS");
             return { ...state, ...action.payload };
-        case RECEIVE_SEARCH_PHOTOS :
+        case RECEIVE_SEARCH_PHOTOS || REQUEST_SEARCH_COLLECTIONS :
             console.log("SEARCH PHOTOOOOS");
             return { ...state, ...action.payload };
         // case NEW_STREAM:
