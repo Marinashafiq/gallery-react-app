@@ -2,18 +2,20 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import './Navigation.scss';
 import { connect } from 'react-redux';
-import { requestCollection , requestPhotos } from '../../store/actions';
+import { requestCollection , requestPhotos , requestPagination } from '../../store/actions';
 
 class Navigation extends React.Component {
 
     getCollections = () => {
         console.log("collections")
         this.props.requestCollection(1);
+        this.props.requestPagination(1);
     }
 
     getPhotos = () => {
         console.log("photos");
         this.props.requestPhotos(1);
+        this.props.requestPagination(1);
     }
 
     render(){
@@ -33,4 +35,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps , {requestPhotos , requestCollection})(Navigation);
+export default connect(mapStateToProps , {requestPhotos , requestCollection , requestPagination})(Navigation);

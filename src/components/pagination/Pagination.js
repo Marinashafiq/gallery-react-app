@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
-import { requestPagination , requestPhotos , requestSearchPhotos } from '../../store/actions/index';
+import { requestPagination , requestPhotos , requestSearchPhotos , requestCollection} from '../../store/actions/index';
 class Pagination extends React.Component {
 
 
@@ -20,6 +20,10 @@ class Pagination extends React.Component {
             console.log("search photos next")
             this.props.requestSearchPhotos(nextPage , this.props.searchKeyword.keyword);
         }
+        else if(this.props.pagingType === 'collections'){
+            console.log("collection paging");
+            this.props.requestCollection(nextPage);
+        }
     }
 
     getPrev = () =>{        
@@ -34,6 +38,10 @@ class Pagination extends React.Component {
             console.log("search photos prev")
 
             this.props.requestSearchPhotos(prevPage , this.props.searchKeyword.keyword);
+        }
+        else if(this.props.pagingType === 'collections'){
+            console.log("collection paging");
+            this.props.requestCollection(prevPage);
         }
       }
     }
@@ -61,4 +69,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps , {requestPagination , requestPhotos , requestSearchPhotos})(Pagination) ;
+export default connect(mapStateToProps , {requestPagination , requestPhotos , requestSearchPhotos , requestCollection})(Pagination) ;
