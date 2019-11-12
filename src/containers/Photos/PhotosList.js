@@ -19,6 +19,7 @@ class PhotosList extends React.Component {
             photo.created_at = this.convertTime(photo.created_at);
             return (
                     <GalleryCard  
+                    id = {photo.id}
                     key={photo.id} 
                     url={photo.urls.full} 
                     name={photo.id} 
