@@ -63,6 +63,7 @@ export const requestSearchCollections = (page , keyword) => {
     }
 };
 
+
 export const requestPagination = (page) => {
     return {
         type: REQUEST_PAGINATION,

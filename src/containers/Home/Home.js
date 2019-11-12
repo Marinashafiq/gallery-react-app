@@ -12,10 +12,10 @@ import Pagination from '../../components/pagination/Pagination';
 class Home extends React.Component {
     render(){
         let renderedComponent ;
-        if(this.props.pagingType == 'photos') {
+        if(this.props.pagingType == 'photos' || this.props.pagingType == 'search_photos') {
             renderedComponent = <PhotosList />
         }
-        else if(this.props.pagingType == 'collections'){
+        else if(this.props.pagingType == 'collections' || this.props.pagingType == 'search_collections'){
             renderedComponent = <CollectionList />
         }
         return(
