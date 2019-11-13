@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { requestPhotos  } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
-import '../../components/search/Search.scss';
-
 
 class PhotosList extends React.Component {
     

@@ -7,7 +7,9 @@ import {
     RECEIVE_COLLECTIONS,
     REQUEST_COLLECTIONS,
     REQUEST_SEARCH_COLLECTIONS,
-    RECEIVE_SEARCH_COLLECTIONS
+    RECEIVE_SEARCH_COLLECTIONS,
+    REQUEST_COLLECTION_PHOTOS,
+    RECEIVE_COLLECTION_PHOTOS
 } from '../actions/types';
 import api from "../../network/apis";
 
@@ -65,6 +67,18 @@ function* getSearchCollections(action) {
 }
 
 
+function* getCollectionPhotos(action) {
+    try {
+        console.log(action);
+        const response = yield call(api.getCollectionPhotos, action.payload.page, action.payload.id);
+        // console.log(response);
+        yield put({ type: RECEIVE_COLLECTION_PHOTOS, payload: response.data });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
 
 
 
@@ -74,4 +88,5 @@ export default function* mySaga() {
     yield takeLatest(REQUEST_SEARCH_PHOTOS, getSearchPhotos);
     yield takeLatest(REQUEST_COLLECTIONS, getCollectionsList);
     yield takeLatest(REQUEST_SEARCH_COLLECTIONS, getSearchCollections);
+    yield takeLatest(REQUEST_COLLECTION_PHOTOS, getCollectionPhotos);
 }
