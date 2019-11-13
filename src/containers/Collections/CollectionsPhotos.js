@@ -9,13 +9,11 @@ import Pagination from '../../components/pagination/Pagination';
 class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
-        console.log(this.props);
         this.props.requestCollectionPhotos(1 ,this.props.computedMatch.params.id);
         this.props.requestCollectionId(this.props.computedMatch.params.id);
     }
 
     renderPhotosList = () => {
-        console.log(this.props.collectionPhotos);
         if(!this.props.collectionPhotos) {
             return(
                 <div>Loading ...</div>
@@ -43,9 +41,7 @@ class CollectionsPhotos extends React.Component {
        return created_at_date;       
     }
 
-    render(){
-        { console.log(this.props.collectionPhotos) }
-        console.log(this.props);
+    render(){        
         return(
             <div>
                 <Container className="my-5">
@@ -69,8 +65,7 @@ class CollectionsPhotos extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log(state);
+const mapStateToProps = (state) => {    
     return { 
         collectionPhotos: Object.values(state.collectionPhotos)       
     };
