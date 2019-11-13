@@ -42,7 +42,6 @@ export const requestSearchPhotos = (page , keyword) => {
 
 
 export const requestCollection = (page) => {
-    console.log(page);
     return {
         type: REQUEST_COLLECTIONS,
         payload : page ,
@@ -67,7 +66,6 @@ export const requestSearchCollections = (page , keyword) => {
 };
 
 export const requestCollectionPhotos = (page , id) => {
-    console.log(id);
     return {
         type: REQUEST_COLLECTION_PHOTOS,
         payload :{

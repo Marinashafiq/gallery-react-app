@@ -10,36 +10,23 @@ import {
     requestCollectionPhotos} from '../../store/actions/index';
 class Pagination extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props);
-    }
 
     getNext = () => {    
-        console.log(this.props);
-        console.log(this.props.currentPage);
         let nextPage = this.props.currentPage + 1 ;
-        console.log(nextPage);
         this.props.requestPagination(nextPage);
         if(this.props.pagingType === 'photos'){
-            console.log("next photos")
-
             this.props.requestPhotos(nextPage);
         }
         else if(this.props.pagingType === 'search_photos'){
-            console.log("search photos next")
             this.props.requestSearchPhotos(nextPage , this.props.searchKeyword.keyword);
         }
         else if(this.props.pagingType === 'collections'){
-            console.log("collection paging");
             this.props.requestCollection(nextPage);
         }
         else if(this.props.pagingType === 'search_collections'){
-            console.log("search collections next")
             this.props.requestSearchCollections(nextPage , this.props.searchKeyword.keyword);
         }
         else if(this.props.pagingType === 'collection-photos'){
-            console.log("collection photos next")
-            console.log(this.props.collectionsId);
             this.props.requestCollectionPhotos(nextPage , this.props.collectionsId);
         }
     }
@@ -49,25 +36,18 @@ class Pagination extends React.Component {
         let prevPage = this.props.currentPage - 1 ;
         this.props.requestPagination(prevPage);
         if(this.props.pagingType === 'photos'){
-            console.log("prev photos")
             this.props.requestPhotos(prevPage);
         }
         else if(this.props.pagingType === 'search_photos'){
-            console.log("search photos prev")
-
             this.props.requestSearchPhotos(prevPage , this.props.searchKeyword.keyword);
         }
         else if(this.props.pagingType === 'collections'){
-            console.log("collection paging");
             this.props.requestCollection(prevPage);
         }
         else if(this.props.pagingType === 'search_collections'){
-            console.log("search collections prev")
             this.props.requestSearchCollections(prevPage , this.props.searchKeyword.keyword);
         }
          else if(this.props.pagingType === 'collection-photos'){
-            console.log("collection photos next")
-            console.log(this.props.collectionsId);
             this.props.requestCollectionPhotos(prevPage , this.props.collectionsId);
         }
       }
@@ -89,7 +69,6 @@ class Pagination extends React.Component {
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        photos: Object.values(state.photos) ,
         currentPage : state.currentPage,
         pagingType : state.pagingType,
         searchKeyword : state.searchKeyword,
