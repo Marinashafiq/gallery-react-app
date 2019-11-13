@@ -21,16 +21,16 @@ class Search extends React.Component {
         this.setState({
             keyword: e.target.value
         })
-        if (e.target.value == "") {
+        if (e.target.value === "") {
             console.log("EMPTYYYYY");
             this.setState({
                 keyword: ""
             })
-            if(this.props.pagingType == 'photos' || this.props.pagingType == 'search_photos'){
+            if(this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos'){
                 this.props.requestPhotos(1);
                 e.target.value  =  '';
             }
-            else if(this.props.pagingType == 'collections' || this.props.pagingType == 'search_collections'){
+            else if(this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections'){
                 this.props.requestCollection(1);
                 e.target.value  =  '';
             }
@@ -43,10 +43,10 @@ class Search extends React.Component {
         e.preventDefault();
         console.log(this.state.keyword)
 
-        if (this.props.pagingType == 'photos' || this.props.pagingType == 'search_photos') {
+        if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
             this.props.requestSearchPhotos(this.props.currentPage, this.state.keyword);
         }
-        else if (this.props.pagingType == 'collections' || this.props.pagingType == 'search_collections') {
+        else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
             this.props.requestSearchCollections(this.props.currentPage, this.state.keyword);
         }
     }

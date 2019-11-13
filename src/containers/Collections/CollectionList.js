@@ -18,8 +18,10 @@ class PhotosList extends React.Component {
         if(this.props.photos) {
             return this.props.photos.map(photo => {
                 console.log("Collections")
+                console.log(photo.id)
                 return (
                     <CollectionCard
+                        id={photo.id}
                         key={photo.id}
                         previewPhotos={photo.preview_photos}
                         tags={photo.tags}

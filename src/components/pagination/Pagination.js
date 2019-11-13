@@ -59,7 +59,7 @@ class Pagination extends React.Component {
     render(){
         return(
             <div className="d-flex justify-content-between align-items-center">
-                <Button variant="outline-warning"  onClick={this.getPrev} className="border-raduis-3 text-white px-5" disabled={this.props.currentPage == 1}>Prev</Button>
+                <Button variant="outline-warning"  onClick={this.getPrev} className="border-raduis-3 text-white px-5" disabled={this.props.currentPage === 1}>Prev</Button>
                 <h6 className="text-white mb-0">Page {this.props.currentPage}</h6>
                 <Button variant="outline-warning" onClick={this.getNext} className="border-raduis-3 text-white px-5" rel="last">Next</Button>
             </div>
