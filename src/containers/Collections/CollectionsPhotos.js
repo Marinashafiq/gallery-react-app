@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollectionPhotos } from '../../store/actions/index';
+import { requestCollectionPhotos , requestCollectionId } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 import { Container } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
@@ -11,6 +11,7 @@ class CollectionsPhotos extends React.Component {
     componentDidMount() {
         console.log(this.props);
         this.props.requestCollectionPhotos(1 ,this.props.computedMatch.params.id);
+        this.props.requestCollectionId(this.props.computedMatch.params.id);
     }
 
     renderPhotosList = () => {
@@ -75,4 +76,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { requestCollectionPhotos })(CollectionsPhotos);
+export default connect(mapStateToProps, { requestCollectionPhotos , requestCollectionId })(CollectionsPhotos);

@@ -5,6 +5,7 @@ import pagingType   from './paginationType';
 import searchKeyword   from './searchPhotosReducer';
 import collectionPhotos from './collectionsReducer';
 import collections from './collectionListReducer' ;
+import collectionsId from './collectionIdReducer' ;
 
 
 
@@ -15,5 +16,6 @@ export default combineReducers({
     currentPage : currentPage,
     pagingType : pagingType , 
     searchKeyword : searchKeyword,
-    collectionPhotos : collectionPhotos
+    collectionPhotos : collectionPhotos ,
+    collectionsId :collectionsId
 })

@@ -8,7 +8,8 @@ import {
     REQUEST_COLLECTIONS , 
     REQUEST_SEARCH_COLLECTIONS,
     RECEIVE_COLLECTION_PHOTOS ,
-    REQUEST_COLLECTION_PHOTOS
+    REQUEST_COLLECTION_PHOTOS,
+    REQUEST_COLLECTION_ID
 } 
     from './types';
 
@@ -97,6 +98,13 @@ export const requestPagingType = (pageType) => {
     return {
         type: REQUEST_PAGINATION_TYPE,
         payload : pageType
+    }
+};
+
+export const requestCollectionId = (id) => {
+    return {
+        type: REQUEST_COLLECTION_ID,
+        payload : id
     }
 };
 

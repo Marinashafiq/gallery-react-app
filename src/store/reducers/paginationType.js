@@ -1,5 +1,9 @@
 import {
-    RECEIVE_PHOTOS,RECEIVE_SEARCH_PHOTOS , REQUEST_SEARCH_COLLECTIONS , REQUEST_COLLECTIONS
+    RECEIVE_PHOTOS,
+    RECEIVE_SEARCH_PHOTOS , 
+    REQUEST_SEARCH_COLLECTIONS , 
+    REQUEST_COLLECTIONS ,
+    REQUEST_COLLECTION_PHOTOS
 } from '../actions/types';
 
 export default (pagingType = 'photos', action) => {
@@ -17,6 +21,9 @@ export default (pagingType = 'photos', action) => {
         case REQUEST_COLLECTIONS : 
             console.log("Collections");
             return 'collections';
+        case REQUEST_COLLECTION_PHOTOS : 
+            console.log("Collections photos");
+            return 'collection-photos';
         default:
             return pagingType;
     }

@@ -1,9 +1,18 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
-import { requestPagination , requestPhotos , requestSearchPhotos , requestCollection , requestSearchCollections} from '../../store/actions/index';
+import { 
+    requestPagination , 
+    requestPhotos , 
+    requestSearchPhotos , 
+    requestCollection , 
+    requestSearchCollections , 
+    requestCollectionPhotos} from '../../store/actions/index';
 class Pagination extends React.Component {
 
+    componentDidMount() {
+        console.log(this.props);
+    }
 
     getNext = () => {    
         console.log(this.props);
@@ -28,6 +37,11 @@ class Pagination extends React.Component {
             console.log("search collections next")
             this.props.requestSearchCollections(nextPage , this.props.searchKeyword.keyword);
         }
+        else if(this.props.pagingType === 'collection-photos'){
+            console.log("collection photos next")
+            console.log(this.props.collectionsId);
+            this.props.requestCollectionPhotos(nextPage , this.props.collectionsId);
+        }
     }
 
     getPrev = () =>{        
@@ -51,6 +65,11 @@ class Pagination extends React.Component {
             console.log("search collections prev")
             this.props.requestSearchCollections(prevPage , this.props.searchKeyword.keyword);
         }
+         else if(this.props.pagingType === 'collection-photos'){
+            console.log("collection photos next")
+            console.log(this.props.collectionsId);
+            this.props.requestCollectionPhotos(prevPage , this.props.collectionsId);
+        }
       }
     }
 
@@ -73,8 +92,9 @@ const mapStateToProps = (state) => {
         photos: Object.values(state.photos) ,
         currentPage : state.currentPage,
         pagingType : state.pagingType,
-        searchKeyword : state.searchKeyword
+        searchKeyword : state.searchKeyword,
+        collectionsId : state.collectionsId
     }
 }
 
-export default connect(mapStateToProps , {requestPagination , requestPhotos , requestSearchPhotos , requestCollection , requestSearchCollections})(Pagination) ;
+export default connect(mapStateToProps , {requestPagination , requestPhotos , requestSearchPhotos , requestCollection , requestSearchCollections , requestCollectionPhotos})(Pagination) ;
