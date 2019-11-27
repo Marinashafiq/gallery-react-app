@@ -1,5 +1,5 @@
 import {
-    RECEIVE_COLLECTIONS, 
+    RECEIVE_COLLECTIONS,
     RECEIVE_SEARCH_COLLECTIONS
 } from '../actions/types';
 

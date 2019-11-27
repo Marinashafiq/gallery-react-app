@@ -6,7 +6,6 @@ import './Search.scss';
 import { connect } from 'react-redux';
 import { requestSearchPhotos, requestPhotos, requestSearchCollections, requestCollection } from '../../store/actions';
 
-
 class Search extends React.Component {
 
     constructor(props) {
@@ -24,13 +23,13 @@ class Search extends React.Component {
             this.setState({
                 keyword: ""
             })
-            if(this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos'){
+            if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
                 this.props.requestPhotos(1);
-                e.target.value  =  '';
+                e.target.value = '';
             }
-            else if(this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections'){
+            else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
                 this.props.requestCollection(1);
-                e.target.value  =  '';
+                e.target.value = '';
             }
         }
     }
@@ -75,4 +74,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { requestSearchPhotos,requestCollection , requestPhotos, requestSearchCollections })(Search);
+export default connect(mapStateToProps, { requestSearchPhotos, requestCollection, requestPhotos, requestSearchCollections })(Search);

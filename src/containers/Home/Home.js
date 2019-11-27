@@ -9,16 +9,16 @@ import Pagination from '../pagination/Pagination';
 import '../search/Search.scss';
 
 class Home extends React.Component {
-    render(){
-        let renderedComponent ;
-        if(this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
+    render() {
+        let renderedComponent;
+        if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
             renderedComponent = <PhotosList />
         }
-        else if(this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections'){
+        else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
             renderedComponent = <CollectionList />
         }
-        return(
-           <div>
+        return (
+            <div>
                 <Header />
                 <Container className="my-5">
                     <CardColumns className="my-5">
@@ -26,15 +26,15 @@ class Home extends React.Component {
                     </CardColumns>
                     <Pagination />
                 </Container>
-           </div>
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        pagingType : state.pagingType
+        pagingType: state.pagingType
     }
 }
 
-export default connect(mapStateToProps)(Home) ;
+export default connect(mapStateToProps)(Home);

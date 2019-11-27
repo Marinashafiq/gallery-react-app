@@ -1,8 +1,6 @@
 import {
-    RECEIVE_PHOTOS, 
-    RECEIVE_SEARCH_PHOTOS, 
-    RECEIVE_COLLECTIONS, 
-    RECEIVE_SEARCH_COLLECTIONS
+    RECEIVE_PHOTOS,
+    RECEIVE_SEARCH_PHOTOS,
 } from '../actions/types';
 
 export default (state = {}, action) => {

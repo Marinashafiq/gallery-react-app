@@ -1,5 +1,5 @@
 import {
-    RECEIVE_COLLECTION_PHOTOS 
+    RECEIVE_COLLECTION_PHOTOS
 } from '../actions/types';
 
 export default (state = {}, action) => {

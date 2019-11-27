@@ -6,14 +6,12 @@ import '../search/Search.scss';
 
 
 class PhotosList extends React.Component {
-
-
     componentDidMount() {
         this.props.requestCollection(1);
     }
 
     renderCollectionList = () => {
-        if(this.props.collections) {
+        if (this.props.collections) {
             return this.props.collections.map(photo => {
                 return (
                     <CollectionCard
@@ -26,7 +24,7 @@ class PhotosList extends React.Component {
                         description={photo.description}
                     />
                 )
-    
+
             })
         }
         else {
@@ -49,7 +47,7 @@ class PhotosList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        collections : Object.values(state.collections),
+        collections: Object.values(state.collections),
         currentPage: state.currentPage,
         pagingType: state.pagingType
     }

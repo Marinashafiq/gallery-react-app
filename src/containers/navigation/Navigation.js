@@ -22,7 +22,7 @@ class Navigation extends React.Component {
     render() {
         return (
             <div className="mt-5 text-white text-center d-flex justify-content-center">
-                <Button onClick={this.getPhotos} variant={this.props.pagingType == "photos" ||  this.props.pagingType == "search_photos" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Photos</Button>
+                <Button onClick={this.getPhotos} variant={this.props.pagingType == "photos" || this.props.pagingType == "search_photos" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Photos</Button>
                 <Button onClick={this.getCollections} variant={this.props.pagingType == "collections" || this.props.pagingType == "search_collections" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Collections</Button>
             </div>
         )
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
     return {
         photos: Object.values(state.photos),
         currentPage: state.currentPage,
-        pagingType : state.pagingType
+        pagingType: state.pagingType
     }
 }
 
