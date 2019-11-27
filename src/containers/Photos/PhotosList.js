@@ -11,7 +11,6 @@ class PhotosList extends React.Component {
     }
 
     downloadImage = (imageId) =>{
-        console.log(imageId);
         this.props.requestDownloadPhoto(imageId);
     }
 

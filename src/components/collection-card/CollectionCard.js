@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 
 
 const CollectionCard = (props) => {
-    console.log(props);
-
     if (props.previewPhotos !== undefined) {
         var RequestNodes = props.previewPhotos.map((request) => <Col xs={6} key={request.urls.thumb}> <div className="backgroundImg" style={{ backgroundImage: 'url(' + request.urls.thumb + ')' }}> </div></Col>)
         var tags = props.tags.map((tag) => <Badge pill variant="warning" className="mr-2" key={tag.title}>{tag.title}</Badge>)

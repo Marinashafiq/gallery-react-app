@@ -25,3 +25,7 @@ body{
     font-weight:bold;
     font-size:1.5rem;        
 }
+
+.border-raduis-3{
+    border-radius: 3em !important;
+}

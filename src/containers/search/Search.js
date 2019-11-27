@@ -55,7 +55,7 @@ class Search extends React.Component {
                         <FormControl
                             aria-label="Large"
                             onChange={e => this.handleChange(e)}
-                            placeholder="Search for images with keywords"
+                            placeholder="Search for images with keywords ( Sky , love .. etc )"
                             className="border-0 shadow border-raduis-3"
                             aria-describedby="inputGroup-sizing-sm" />
                     </InputGroup>

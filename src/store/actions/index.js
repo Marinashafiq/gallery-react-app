@@ -16,7 +16,6 @@ import {
     from './types';
 
 export const requestPhotos = (page) => {
-    console.log(page);
     return {
         type: REQUEST_PHOTOS,
         payload : page ,
@@ -85,7 +84,6 @@ export const receiveCollectionsPhotos = (data) => {
 };
 
 export const requestDownloadPhoto = (id) => {
-    console.log("request" , id);
     return {
         type: REQUEST_DOWNLOAD_PHOTO,
         payload : id
@@ -93,8 +91,6 @@ export const requestDownloadPhoto = (id) => {
 };
 
 export const receiveDownloadPhoto = (data) => {
-    console.log("receive" , data);
-
     return {
         type: RECEIVE_DOWNLOAD_PHOTO, 
         payload: data       

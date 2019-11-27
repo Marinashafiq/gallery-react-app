@@ -70,9 +70,7 @@ function* getCollectionPhotos(action) {
 // DOWNLOAD IMAGES
 function* getDownloadImage(action) {
     try {
-        console.log(action);
         const response = yield call(api.downloadImages, action.payload);
-        console.log(response);
         FileSaver.saveAs(response.data.url, `Unsplash-${action.payload}.jpg`);
         yield put({ type: RECEIVE_DOWNLOAD_PHOTO, payload: response.data });
     } catch (err) {

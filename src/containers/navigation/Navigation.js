@@ -21,9 +21,9 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <div className="mt-5 w-25 mx-auto container text-white text-center d-flex justify-content-between">
-                <Button onClick={this.getPhotos} variant="outline-warning" className="text-white px-5 border-bottom-1">Photos</Button>
-                <Button onClick={this.getCollections} variant="outline-warning" className="text-white px-5 border-bottom-1">Collections</Button>
+            <div className="mt-5 text-white text-center d-flex justify-content-center">
+                <Button onClick={this.getPhotos} variant={this.props.pagingType == "photos" ||  this.props.pagingType == "search_photos" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Photos</Button>
+                <Button onClick={this.getCollections} variant={this.props.pagingType == "collections" || this.props.pagingType == "search_collections" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Collections</Button>
             </div>
         )
     }
@@ -32,7 +32,8 @@ class Navigation extends React.Component {
 const mapStateToProps = (state) => {
     return {
         photos: Object.values(state.photos),
-        currentPage: state.currentPage
+        currentPage: state.currentPage,
+        pagingType : state.pagingType
     }
 }
 

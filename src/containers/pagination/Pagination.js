@@ -67,7 +67,6 @@ class Pagination extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         currentPage : state.currentPage,
         pagingType : state.pagingType,

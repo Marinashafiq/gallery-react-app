@@ -1,35 +1,36 @@
-import React from 'react' ;
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
+import './GalleryCard.scss';
 
-const GalleryCard = (props) =>{
+const GalleryCard = (props) => {
 
-    function download () {
-        console.log(props.id);
-        props.downloadImageId(props.id)       
+    function download() {
+        props.downloadImageId(props.id)
     }
 
-    return(
-       <div>
+    return (
+        <div>
             <Card className="border-0 shadow mb-3">
                 <Card.Img variant="top" src={props.url} />
-                <Card.Body>                                       
-                    <Card.Title>
-                    <Image src={props.user.profile_image.small} roundedCircle />
-                    <small className="mx-2">{props.user.name}</small>
-                    </Card.Title>                   
+                <Card.Body>
+                    <Card.Title className="d-flex justify-content-between">
+                        <div className="userData">
+                            <Image src={props.user.profile_image.small} roundedCircle />
+                            <small className="mx-2">{props.user.name}</small>
+                        </div>
+                        <i onClick={download} className="fa fa-arrow-down text-warning downloadIcon"></i>
+                    </Card.Title>
                     <Card.Text>
                         {props.description}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between">
                     <small className="text-muted">{props.created_at}</small>
-                    <small className="text-muted">{props.likes}</small>
-                    <Button onClick={download}>Download Image</Button>
+                    <small className="text-muted"><i className="fa fa-heart mr-1"></i>{props.likes}</small>
                 </Card.Footer>
             </Card>
-       </div>
+        </div>
     )
 }
 

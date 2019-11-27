@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollection } from '../../store/actions/index';
+import { requestCollection } from '../../store/actions';
 import CollectionCard from '../../components/collection-card/CollectionCard';
 import '../search/Search.scss';
 

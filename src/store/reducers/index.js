@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import photosReducer from './photosReducer';
 import currentPageReducer   from './currentPageReducer';
 import pagingTypeReducer   from './pagingTypeReducer';
-import searchKeywordReducer   from './searchReducer';
+import searchKeywordReducer   from './searchKeywordReducer';
 import collectionPhotosReducer from './collectionsReducer';
 import collectionsReducer from './collectionListReducer' ;
 import collectionsIdReducer from './collectionIdReducer' ;

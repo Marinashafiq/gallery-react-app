@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollectionPhotos , requestCollectionId } from '../../store/actions/index';
+import { requestCollectionPhotos , requestCollectionId , requestDownloadPhoto} from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 import { Container } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
@@ -13,6 +13,10 @@ class CollectionsPhotos extends React.Component {
         this.props.requestCollectionId(this.props.computedMatch.params.id);
     }
 
+    downloadImage = (imageId) =>{
+        this.props.requestDownloadPhoto(imageId);
+    }
+
     renderPhotosList = () => {
         if(!this.props.collectionPhotos) {
             return(
@@ -23,6 +27,7 @@ class CollectionsPhotos extends React.Component {
             photo.created_at = this.convertTime(photo.created_at)
             return (
                 <GalleryCard  
+                id={photo.id}
                 key={photo.id} 
                 url={photo.urls.full} 
                 name={photo.id} 
@@ -30,6 +35,8 @@ class CollectionsPhotos extends React.Component {
                 description = {photo.description}
                 likes = {photo.likes}
                 user = {photo.user}
+                downloadImageId = {this.downloadImage}
+
                 /> 
             )
         }); 
@@ -71,4 +78,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { requestCollectionPhotos , requestCollectionId })(CollectionsPhotos);
+export default connect(mapStateToProps, { requestCollectionPhotos , requestCollectionId , requestDownloadPhoto})(CollectionsPhotos);
