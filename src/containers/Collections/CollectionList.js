@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { requestCollection } from '../../store/actions/index';
 import CollectionCard from '../../components/collection-card/CollectionCard';
-import '../../components/search/Search.scss';
+import '../search/Search.scss';
 
 
 class PhotosList extends React.Component {

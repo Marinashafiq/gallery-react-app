@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../search/Search';
+import Search from '../../containers/search/Search';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { Container } from 'react-bootstrap';
 import './Header.scss';

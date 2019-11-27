@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestPhotos  } from '../../store/actions/index';
+import { requestPhotos , requestDownloadPhoto } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 
 class PhotosList extends React.Component {
@@ -8,6 +8,11 @@ class PhotosList extends React.Component {
 
     componentDidMount() {
         this.props.requestPhotos(1);
+    }
+
+    downloadImage = (imageId) =>{
+        console.log(imageId);
+        this.props.requestDownloadPhoto(imageId);
     }
 
     renderPhotosList = () => {
@@ -23,6 +28,7 @@ class PhotosList extends React.Component {
                     description = {photo.description}
                     likes = {photo.likes}
                     user = {photo.user}
+                    downloadImageId = {this.downloadImage}
                 /> 
             )
         })
@@ -54,4 +60,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { requestPhotos })(PhotosList);
+export default connect(mapStateToProps, { requestPhotos , requestDownloadPhoto })(PhotosList);

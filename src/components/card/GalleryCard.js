@@ -1,8 +1,15 @@
 import React from 'react' ;
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
 
 const GalleryCard = (props) =>{
+
+    function download () {
+        console.log(props.id);
+        props.downloadImageId(props.id)       
+    }
+
     return(
        <div>
             <Card className="border-0 shadow mb-3">
@@ -19,6 +26,7 @@ const GalleryCard = (props) =>{
                 <Card.Footer className="d-flex justify-content-between">
                     <small className="text-muted">{props.created_at}</small>
                     <small className="text-muted">{props.likes}</small>
+                    <Button onClick={download}>Download Image</Button>
                 </Card.Footer>
             </Card>
        </div>

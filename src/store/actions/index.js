@@ -9,7 +9,9 @@ import {
     REQUEST_SEARCH_COLLECTIONS,
     RECEIVE_COLLECTION_PHOTOS ,
     REQUEST_COLLECTION_PHOTOS,
-    REQUEST_COLLECTION_ID
+    REQUEST_COLLECTION_ID ,
+    REQUEST_DOWNLOAD_PHOTO ,
+    RECEIVE_DOWNLOAD_PHOTO
 } 
     from './types';
 
@@ -78,6 +80,23 @@ export const requestCollectionPhotos = (page , id) => {
 export const receiveCollectionsPhotos = (data) => {
     return {
         type: RECEIVE_COLLECTION_PHOTOS, 
+        payload: data       
+    }
+};
+
+export const requestDownloadPhoto = (id) => {
+    console.log("request" , id);
+    return {
+        type: REQUEST_DOWNLOAD_PHOTO,
+        payload : id
+    }
+};
+
+export const receiveDownloadPhoto = (data) => {
+    console.log("receive" , data);
+
+    return {
+        type: RECEIVE_DOWNLOAD_PHOTO, 
         payload: data       
     }
 };

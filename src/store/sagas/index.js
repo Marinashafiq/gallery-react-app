@@ -9,12 +9,14 @@ import {
     REQUEST_SEARCH_COLLECTIONS,
     RECEIVE_SEARCH_COLLECTIONS,
     REQUEST_COLLECTION_PHOTOS,
-    RECEIVE_COLLECTION_PHOTOS
+    RECEIVE_COLLECTION_PHOTOS ,
+    REQUEST_DOWNLOAD_PHOTO,
+    RECEIVE_DOWNLOAD_PHOTO
 } from '../actions/types';
 import api from "../../network/apis";
+import FileSaver from 'file-saver';
 
-// import history from '../../routes/history';
-
+// GET PHOTOS
 function* getPhotosList(action) {
     try {
         const response = yield call(api.getPhotos, action.payload);
@@ -24,6 +26,7 @@ function* getPhotosList(action) {
     }
 }
 
+// SEARCH PHOTOS
 function* getSearchPhotos(action) {
     try {
         const response = yield call(api.getSearchPhotos, action.payload.page, action.payload.keyword);
@@ -33,6 +36,7 @@ function* getSearchPhotos(action) {
     }
 }
 
+// GET COLLECTIONS
 function* getCollectionsList(action) {
     try {
         const response = yield call(api.getCollections, action.payload);
@@ -42,7 +46,7 @@ function* getCollectionsList(action) {
     }
 }
 
-
+// SEARCH COLLECTIONS
 function* getSearchCollections(action) {
     try {
         const response = yield call(api.getSearchCollections, action.payload.page, action.payload.keyword);
@@ -52,11 +56,25 @@ function* getSearchCollections(action) {
     }
 }
 
-
+// GET PHOTOS OF SPECIFIC COLLECTION
 function* getCollectionPhotos(action) {
     try {
         const response = yield call(api.getCollectionPhotos, action.payload.page, action.payload.id);
         yield put({ type: RECEIVE_COLLECTION_PHOTOS, payload: response.data });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+// DOWNLOAD IMAGES
+function* getDownloadImage(action) {
+    try {
+        console.log(action);
+        const response = yield call(api.downloadImages, action.payload);
+        console.log(response);
+        FileSaver.saveAs(response.data.url, `Unsplash-${action.payload}.jpg`);
+        yield put({ type: RECEIVE_DOWNLOAD_PHOTO, payload: response.data });
     } catch (err) {
         console.log(err);
     }
@@ -70,4 +88,5 @@ export default function* mySaga() {
     yield takeLatest(REQUEST_COLLECTIONS, getCollectionsList);
     yield takeLatest(REQUEST_SEARCH_COLLECTIONS, getSearchCollections);
     yield takeLatest(REQUEST_COLLECTION_PHOTOS, getCollectionPhotos);
+    yield takeLatest(REQUEST_DOWNLOAD_PHOTO, getDownloadImage);
 }

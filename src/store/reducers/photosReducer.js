@@ -11,10 +11,6 @@ export default (state = {}, action) => {
             return { ...state, ...action.payload };
         case RECEIVE_SEARCH_PHOTOS:
             return { ...state, ...action.payload };
-        case RECEIVE_COLLECTIONS:
-            return { ...state, ...action.payload };
-        case RECEIVE_SEARCH_COLLECTIONS:
-            return { ...state, ...action.payload };
         default:
             return state;
     }

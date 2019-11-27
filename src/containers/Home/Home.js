@@ -5,8 +5,8 @@ import CollectionList from '../Collections/CollectionList';
 import { Container } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Header from '../../components/header/Header';
-import '../../components/search/Search.scss';
-import Pagination from '../../components/pagination/Pagination';
+import '../search/Search.scss';
+import Pagination from '../pagination/Pagination';
 
 class Home extends React.Component {
     render(){

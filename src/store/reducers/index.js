@@ -1,21 +1,19 @@
 import { combineReducers } from 'redux';
 import photosReducer from './photosReducer';
-import currentPage   from './currentPage';
-import pagingType   from './paginationType';
-import searchKeyword   from './searchPhotosReducer';
-import collectionPhotos from './collectionsReducer';
-import collections from './collectionListReducer' ;
-import collectionsId from './collectionIdReducer' ;
-
-
+import currentPageReducer   from './currentPageReducer';
+import pagingTypeReducer   from './pagingTypeReducer';
+import searchKeywordReducer   from './searchReducer';
+import collectionPhotosReducer from './collectionsReducer';
+import collectionsReducer from './collectionListReducer' ;
+import collectionsIdReducer from './collectionIdReducer' ;
 
 
 export default combineReducers({
     photos: photosReducer,
-    collections : collections,
-    currentPage : currentPage,
-    pagingType : pagingType , 
-    searchKeyword : searchKeyword,
-    collectionPhotos : collectionPhotos ,
-    collectionsId :collectionsId
+    collections : collectionsReducer,
+    currentPage : currentPageReducer,
+    pagingType : pagingTypeReducer , 
+    searchKeyword : searchKeywordReducer,
+    collectionPhotos : collectionPhotosReducer ,
+    collectionsId :collectionsIdReducer ,
 })

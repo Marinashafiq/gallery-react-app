@@ -4,7 +4,7 @@ import { requestCollectionPhotos , requestCollectionId } from '../../store/actio
 import GalleryCard from '../../components/card/GalleryCard';
 import { Container } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
-import Pagination from '../../components/pagination/Pagination';
+import Pagination from '../pagination/Pagination';
 
 class CollectionsPhotos extends React.Component {
 
