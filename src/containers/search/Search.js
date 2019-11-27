@@ -4,7 +4,12 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import './Search.scss';
 import { connect } from 'react-redux';
-import { requestSearchPhotos, requestPhotos, requestSearchCollections, requestCollection } from '../../store/actions';
+import { 
+    requestSearchPhotos, 
+    requestPhotos, 
+    requestSearchCollections, 
+    requestCollection,
+    requestPagination } from '../../store/actions';
 
 class Search extends React.Component {
 
@@ -36,7 +41,7 @@ class Search extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-
+        this.props.requestPagination(1);
         if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
             this.props.requestSearchPhotos(this.props.currentPage, this.state.keyword);
         }
@@ -74,4 +79,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { requestSearchPhotos, requestCollection, requestPhotos, requestSearchCollections })(Search);
+export default connect(mapStateToProps, { requestSearchPhotos, requestCollection, requestPhotos, requestSearchCollections , requestPagination })(Search);
