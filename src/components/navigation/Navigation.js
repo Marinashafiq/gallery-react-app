@@ -7,7 +7,6 @@ import { requestCollection, requestPhotos, requestPagination, requestSearchColle
 class Navigation extends React.Component {
 
     getCollections = () => {
-        console.log("collections")
         this.props.requestCollection(1);
         this.props.requestPagination(1);
         this.props.requestSearchCollections(1, "");
@@ -15,7 +14,6 @@ class Navigation extends React.Component {
     }
 
     getPhotos = () => {
-        console.log("photos");
         this.props.requestPhotos(1);
         this.props.requestPagination(1);
         this.props.requestSearchPhotos(1, "");

@@ -6,7 +6,10 @@ import {
     REQUEST_PAGINATION_TYPE , 
     RECEIVE_COLLECTIONS ,
     REQUEST_COLLECTIONS , 
-    REQUEST_SEARCH_COLLECTIONS
+    REQUEST_SEARCH_COLLECTIONS,
+    RECEIVE_COLLECTION_PHOTOS ,
+    REQUEST_COLLECTION_PHOTOS,
+    REQUEST_COLLECTION_ID
 } 
     from './types';
 
@@ -39,7 +42,6 @@ export const requestSearchPhotos = (page , keyword) => {
 
 
 export const requestCollection = (page) => {
-    console.log(page);
     return {
         type: REQUEST_COLLECTIONS,
         payload : page ,
@@ -63,6 +65,24 @@ export const requestSearchCollections = (page , keyword) => {
     }
 };
 
+export const requestCollectionPhotos = (page , id) => {
+    return {
+        type: REQUEST_COLLECTION_PHOTOS,
+        payload :{
+            page , 
+            id 
+        }
+    }
+};
+
+export const receiveCollectionsPhotos = (data) => {
+    return {
+        type: RECEIVE_COLLECTION_PHOTOS, 
+        payload: data       
+    }
+};
+
+// GENERAL ACTIONS
 
 export const requestPagination = (page) => {
     return {
@@ -76,6 +96,13 @@ export const requestPagingType = (pageType) => {
     return {
         type: REQUEST_PAGINATION_TYPE,
         payload : pageType
+    }
+};
+
+export const requestCollectionId = (id) => {
+    return {
+        type: REQUEST_COLLECTION_ID,
+        payload : id
     }
 };
 

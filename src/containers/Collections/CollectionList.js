@@ -9,17 +9,15 @@ class PhotosList extends React.Component {
 
 
     componentDidMount() {
-        console.log("props", this.props.photos);
         this.props.requestCollection(1);
     }
 
     renderCollectionList = () => {
-        console.log(this.props.photos);
-        if(this.props.photos) {
-            return this.props.photos.map(photo => {
-                console.log("Collections")
+        if(this.props.collections) {
+            return this.props.collections.map(photo => {
                 return (
                     <CollectionCard
+                        id={photo.id}
                         key={photo.id}
                         previewPhotos={photo.preview_photos}
                         tags={photo.tags}
@@ -41,7 +39,6 @@ class PhotosList extends React.Component {
 
 
     render() {
-        console.log(this.props.photos);
         return (
             <div>
                 {this.renderCollectionList()}
@@ -51,9 +48,8 @@ class PhotosList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
-        photos: Object.values(state.photos),
+        collections : Object.values(state.collections),
         currentPage: state.currentPage,
         pagingType: state.pagingType
     }

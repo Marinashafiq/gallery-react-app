@@ -2,19 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { requestPhotos  } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
-import '../../components/search/Search.scss';
-
 
 class PhotosList extends React.Component {
     
 
     componentDidMount() {
-        console.log("props" , this.props.photos);
         this.props.requestPhotos(1);
     }
 
     renderPhotosList = () => {
-        console.log(this.props.photos);
         return this.props.photos.map(photo => {
             photo.created_at = this.convertTime(photo.created_at);
             return (
@@ -41,7 +37,6 @@ class PhotosList extends React.Component {
 
 
     render() {
-        console.log(this.props.photos);
         return (
             <div>
                 {this.renderPhotosList()}
@@ -51,7 +46,6 @@ class PhotosList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         photos: Object.values(state.photos),
         currentPage : state.currentPage ,

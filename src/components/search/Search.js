@@ -17,36 +17,31 @@ class Search extends React.Component {
     }
 
     handleChange = (e) => {
-        console.log(e.target.value)
         this.setState({
             keyword: e.target.value
         })
-        if (e.target.value == "") {
-            console.log("EMPTYYYYY");
+        if (e.target.value === "") {
             this.setState({
                 keyword: ""
             })
-            if(this.props.pagingType == 'photos' || this.props.pagingType == 'search_photos'){
+            if(this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos'){
                 this.props.requestPhotos(1);
                 e.target.value  =  '';
             }
-            else if(this.props.pagingType == 'collections' || this.props.pagingType == 'search_collections'){
+            else if(this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections'){
                 this.props.requestCollection(1);
                 e.target.value  =  '';
             }
         }
-        console.log(this.state);
     }
 
     onSubmit = (e) => {
-        console.log(this.props);
         e.preventDefault();
-        console.log(this.state.keyword)
 
-        if (this.props.pagingType == 'photos' || this.props.pagingType == 'search_photos') {
+        if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
             this.props.requestSearchPhotos(this.props.currentPage, this.state.keyword);
         }
-        else if (this.props.pagingType == 'collections' || this.props.pagingType == 'search_collections') {
+        else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
             this.props.requestSearchCollections(this.props.currentPage, this.state.keyword);
         }
     }
@@ -73,7 +68,6 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         photos: Object.values(state.photos),
         currentPage: state.currentPage,
