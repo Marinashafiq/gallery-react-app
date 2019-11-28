@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto } from '../../store/actions/index';
+import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto , requestRelatedCollections} from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 import { Container } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
@@ -11,6 +11,7 @@ class CollectionsPhotos extends React.Component {
     componentDidMount() {
         this.props.requestCollectionPhotos(1, this.props.computedMatch.params.id);
         this.props.requestCollectionId(this.props.computedMatch.params.id);
+        this.props.requestRelatedCollections(1 , this.props.computedMatch.params.id);
     }
 
     downloadImage = (imageId) => {
@@ -62,6 +63,7 @@ class CollectionsPhotos extends React.Component {
                             Scott Lorenzo
                     </footer>
                     </blockquote>
+                    <h4 className="text-white">Related Collections</h4>
                     <CardColumns className="my-5">
                         {this.renderPhotosList()}
                     </CardColumns>
@@ -73,9 +75,11 @@ class CollectionsPhotos extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        collectionPhotos: Object.values(state.collectionPhotos)
+        collectionPhotos: Object.values(state.collectionPhotos),
+        relatedCollections : state.relatedCollections 
     };
 }
 
-export default connect(mapStateToProps, { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto })(CollectionsPhotos);
+export default connect(mapStateToProps, { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto , requestRelatedCollections })(CollectionsPhotos);

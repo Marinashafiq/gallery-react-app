@@ -6,6 +6,7 @@ import searchKeywordReducer   from './searchKeywordReducer';
 import collectionPhotosReducer from './collectionsReducer';
 import collectionsReducer from './collectionListReducer' ;
 import collectionsIdReducer from './collectionIdReducer' ;
+import relatedCollectionsReducer from './relatedCollections' ;
 
 
 export default combineReducers({
@@ -16,4 +17,5 @@ export default combineReducers({
     searchKeyword : searchKeywordReducer,
     collectionPhotos : collectionPhotosReducer ,
     collectionsId :collectionsIdReducer ,
+    relatedCollections : relatedCollectionsReducer
 })

@@ -11,7 +11,9 @@ import {
     REQUEST_COLLECTION_PHOTOS,
     REQUEST_COLLECTION_ID,
     REQUEST_DOWNLOAD_PHOTO,
-    RECEIVE_DOWNLOAD_PHOTO
+    RECEIVE_DOWNLOAD_PHOTO ,
+    REQUEST_RELATED_COLLECTIONS,
+    RECEIVE_RELATED_COLLECTIONS
 }
     from './types';
 
@@ -29,7 +31,6 @@ export const receivePhotos = (data) => {
     }
 };
 
-
 export const requestSearchPhotos = (page, keyword) => {
     return {
         type: REQUEST_SEARCH_PHOTOS,
@@ -39,8 +40,6 @@ export const requestSearchPhotos = (page, keyword) => {
         }
     }
 };
-
-
 
 export const requestCollection = (page) => {
     return {
@@ -79,6 +78,23 @@ export const requestCollectionPhotos = (page, id) => {
 export const receiveCollectionsPhotos = (data) => {
     return {
         type: RECEIVE_COLLECTION_PHOTOS,
+        payload: data
+    }
+};
+
+export const requestRelatedCollections = (page, id) => {
+    return {
+        type: REQUEST_RELATED_COLLECTIONS,
+        payload: {
+            page,
+            id
+        }
+    }
+};
+
+export const receiveRelatedCollections = (data) => {
+    return {
+        type: RECEIVE_RELATED_COLLECTIONS,
         payload: data
     }
 };

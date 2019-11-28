@@ -11,7 +11,9 @@ import {
     REQUEST_COLLECTION_PHOTOS,
     RECEIVE_COLLECTION_PHOTOS,
     REQUEST_DOWNLOAD_PHOTO,
-    RECEIVE_DOWNLOAD_PHOTO
+    RECEIVE_DOWNLOAD_PHOTO,
+    RECEIVE_RELATED_COLLECTIONS,
+    REQUEST_RELATED_COLLECTIONS
 } from '../actions/types';
 import api from "../../network/apis";
 import FileSaver from 'file-saver';
@@ -66,6 +68,15 @@ function* getCollectionPhotos(action) {
     }
 }
 
+// GET PHOTOS OF SPECIFIC COLLECTION
+function* getRelatedCollections(action) {
+    try {
+        const response = yield call(api.getRelatedCollections, action.payload.page, action.payload.id);
+        yield put({ type: RECEIVE_RELATED_COLLECTIONS, payload: response.data });
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 // DOWNLOAD IMAGES
 function* getDownloadImage(action) {
@@ -86,5 +97,6 @@ export default function* mySaga() {
     yield takeLatest(REQUEST_COLLECTIONS, getCollectionsList);
     yield takeLatest(REQUEST_SEARCH_COLLECTIONS, getSearchCollections);
     yield takeLatest(REQUEST_COLLECTION_PHOTOS, getCollectionPhotos);
+    yield takeLatest(REQUEST_RELATED_COLLECTIONS, getRelatedCollections);
     yield takeLatest(REQUEST_DOWNLOAD_PHOTO, getDownloadImage);
 }
