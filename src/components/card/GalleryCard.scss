@@ -1,3 +1,17 @@
-.downloadIcon{
+.downloadIcon {
     cursor: pointer;
+}
+
+.zoom-in-image{
+    height: auto; 
+    overflow: hidden; 
+    position: relative;
+    img{
+        transition: transform .5s ease;
+    }
+    &:hover {
+        img { 
+            transform: scale(1.5);
+        }
+    }
 }

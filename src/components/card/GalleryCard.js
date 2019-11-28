@@ -12,14 +12,16 @@ const GalleryCard = (props) => {
     return (
         <div>
             <Card className="border-0 shadow mb-3">
-                <Card.Img variant="top" src={props.url} />
+                <div class="zoom-in-image">
+                    <Card.Img variant="top"  src={props.url} />
+                </div>
                 <Card.Body>
                     <Card.Title className="d-flex justify-content-between">
                         <div className="userData">
                             <Image src={props.user.profile_image.small} roundedCircle />
                             <small className="mx-2">{props.user.name}</small>
                         </div>
-                        <i onClick={download} className="fa fa-arrow-down text-warning downloadIcon"></i>
+                    <i onClick={download} className="fa fa-arrow-down text-warning downloadIcon"></i>
                     </Card.Title>
                     <Card.Text>
                         {props.description}
