@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import './Navigation.scss';
 import { connect } from 'react-redux';
 import { requestCollection, requestPhotos, requestPagination, requestSearchCollections, requestSearchPhotos } from '../../store/actions';
+import { Link } from "react-router-dom";
 
 class Navigation extends React.Component {
 
@@ -22,8 +23,12 @@ class Navigation extends React.Component {
     render() {
         return (
             <div className="mt-5 text-white text-center d-flex justify-content-center">
-                <Button onClick={this.getPhotos} variant={this.props.pagingType == "photos" || this.props.pagingType == "search_photos" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Photos</Button>
-                <Button onClick={this.getCollections} variant={this.props.pagingType == "collections" || this.props.pagingType == "search_collections" ? "outline-warning" : "link"} className={"text-white px-5 mx-2"}>Collections</Button>
+                <Button  onClick={this.getPhotos} variant={this.props.pagingType === "photos" || this.props.pagingType === "search_photos" ? "outline-warning" : "link"} >
+                    <Link to={"/"} className={"text-white px-5 mx-2"}>Photos</Link>
+                </Button>
+                <Button onClick={this.getCollections} variant={this.props.pagingType === "collections" || this.props.pagingType === "search_collections" ? "outline-warning" : "link"}>
+                    <Link to={"/collections"} className={"text-white px-5 mx-2"}>Collections</Link>
+                </Button>
             </div>
         )
     }

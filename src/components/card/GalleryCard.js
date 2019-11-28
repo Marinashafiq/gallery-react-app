@@ -12,7 +12,7 @@ const GalleryCard = (props) => {
     return (
         <div>
             <Card className="border-0 shadow mb-3">
-                <div class="zoom-in-image">
+                <div className="zoom-in-image">
                     <Card.Img variant="top"  src={props.url} />
                 </div>
                 <Card.Body>
