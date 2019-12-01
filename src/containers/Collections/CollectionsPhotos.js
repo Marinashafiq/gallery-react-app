@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto , requestRelatedCollections} from '../../store/actions/index';
+import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Pagination from '../pagination/Pagination';
+import CollectionCard from '../../components/collection-card/CollectionCard';
+import CardDeck from 'react-bootstrap/CardDeck';
 
 class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
         this.props.requestCollectionPhotos(1, this.props.computedMatch.params.id);
         this.props.requestCollectionId(this.props.computedMatch.params.id);
-        this.props.requestRelatedCollections(1 , this.props.computedMatch.params.id);
+        this.props.requestRelatedCollections(1, this.props.computedMatch.params.id);
     }
 
     downloadImage = (imageId) => {
@@ -43,6 +45,33 @@ class CollectionsPhotos extends React.Component {
         });
     }
 
+    renderRelatedCollections = () => {
+        console.log(this.props.relatedCollections)
+        if (!this.props.relatedCollections) {
+            return (
+                <div> Still Loading ... </div>
+            )
+        }
+        else {
+            return this.props.relatedCollections.map(photo => {
+                return (
+                    <Col key={photo.id}>
+                        <CollectionCard
+                            id={photo.id}
+                            key={photo.id}
+                            previewPhotos={photo.preview_photos}
+                            tags={photo.tags}
+                            title={photo.title}
+                            totalPhotos={photo.total_photos}
+                            description={photo.description}
+                        />
+                    </Col>
+                )
+
+            })
+        }
+    }
+
     convertTime(createdAt) {
         let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         let created_at_date = new Date(createdAt).toLocaleDateString('en-US', options);
@@ -63,7 +92,12 @@ class CollectionsPhotos extends React.Component {
                             Scott Lorenzo
                     </footer>
                     </blockquote>
-                    <h4 className="text-white">Related Collections</h4>
+                    <h6 className="text-white mt-4">Related Collections</h6>
+                    <Row>
+                        <CardDeck>
+                            {this.renderRelatedCollections()}
+                        </CardDeck>
+                    </Row>
                     <CardColumns className="my-5">
                         {this.renderPhotosList()}
                     </CardColumns>
@@ -78,8 +112,8 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         collectionPhotos: Object.values(state.collectionPhotos),
-        relatedCollections : state.relatedCollections 
+        relatedCollections: Object.values(state.relatedCollections)
     };
 }
 
-export default connect(mapStateToProps, { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto , requestRelatedCollections })(CollectionsPhotos);
+export default connect(mapStateToProps, { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections })(CollectionsPhotos);
