@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const CollectionCard = (props) => {
     if (props.previewPhotos !== undefined) {
-        var RequestNodes = props.previewPhotos.map((request) => <Col xs={6} key={request.urls.thumb}> <div className="backgroundImg" style={{ backgroundImage: 'url(' + request.urls.thumb + ')' }}> </div></Col>)
+        var previewImages = props.previewPhotos.map((request) => <Col xs={6} key={request.urls.thumb}> <div className="backgroundImg" style={{ backgroundImage: 'url(' + request.urls.thumb + ')' }}> </div></Col>)
         var tags = props.tags.map((tag) => <Badge pill variant="warning" className="mr-2" key={tag.title}>{tag.title}</Badge>)
     }
 
@@ -20,7 +20,7 @@ const CollectionCard = (props) => {
                 <Card className="border-0 shadow mb-3">
                     <Container>
                         <Row>
-                            {RequestNodes}
+                            {previewImages}
                         </Row>
                     </Container>
                     <Card.Body>
@@ -35,7 +35,7 @@ const CollectionCard = (props) => {
                         {tags}
                     </Card.Body>
                     <Card.Footer className="d-flex justify-content-between">
-                        <small className="text-muted">{props.totalPhotos}</small>
+                        <small className="text-muted">Total Photos : {props.totalPhotos}</small>
                     </Card.Footer>
                 </Card>
             </Link>

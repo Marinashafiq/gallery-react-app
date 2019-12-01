@@ -7,30 +7,35 @@ import '../search/Search.scss';
 
 class PhotosList extends React.Component {
     componentDidMount() {
-        this.props.requestCollection(1);
+        const { requestCollection } = this.props ;
+        requestCollection(1);
     }
 
     renderCollectionList = () => {
-        if (this.props.collections) {
-            return this.props.collections.map(photo => {
+        const { collections } = this.props;
+        if (!collections) {
+            return (
+                <div> Still Loading ... </div>
+            )
+            
+        }
+        else {
+            return collections.map(photo => {
+                const { id , preview_photos , tags , title , total_photos , description } = photo ;
                 return (
                     <CollectionCard
-                        id={photo.id}
-                        key={photo.id}
-                        previewPhotos={photo.preview_photos}
-                        tags={photo.tags}
-                        title={photo.title}
-                        totalPhotos={photo.total_photos}
-                        description={photo.description}
+                        id={id}
+                        key={id}
+                        previewPhotos={preview_photos}
+                        tags={tags}
+                        title={title}
+                        totalPhotos={total_photos}
+                        description={description}
                     />
                 )
 
             })
-        }
-        else {
-            return (
-                <div> Still Loading ... </div>
-            )
+           
         }
 
     }
@@ -47,9 +52,7 @@ class PhotosList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        collections: Object.values(state.collections),
-        currentPage: state.currentPage,
-        pagingType: state.pagingType
+        collections: Object.values(state.collections)
     }
 }
 
