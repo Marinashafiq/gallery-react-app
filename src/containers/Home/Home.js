@@ -11,10 +11,11 @@ import '../search/Search.scss';
 class Home extends React.Component {
     render() {
         let renderedComponent;
-        if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
+        const { pagingType } = this.props ;
+        if (pagingType === 'photos' || pagingType === 'search_photos') {
             renderedComponent = <PhotosList />
         }
-        else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
+        else if (pagingType === 'collections' || pagingType === 'search_collections') {
             renderedComponent = <CollectionList />
         }
         return (

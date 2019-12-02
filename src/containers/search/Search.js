@@ -21,6 +21,7 @@ class Search extends React.Component {
     }
 
     handleChange = (e) => {
+        const { pagingType , requestPhotos , requestCollection } = this.props ;
         this.setState({
             keyword: e.target.value
         })
@@ -28,25 +29,26 @@ class Search extends React.Component {
             this.setState({
                 keyword: ""
             })
-            if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
-                this.props.requestPhotos(1);
+            if (pagingType === 'photos' || pagingType === 'search_photos') {
+                requestPhotos(1);
                 e.target.value = '';
             }
-            else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
-                this.props.requestCollection(1);
+            else if (pagingType === 'collections' || pagingType === 'search_collections') {
+                requestCollection(1);
                 e.target.value = '';
             }
         }
     }
 
     onSubmit = (e) => {
+        const { pagingType , currentPage , requestSearchPhotos , requestSearchCollections , requestPagination} = this.props ;
         e.preventDefault();
-        this.props.requestPagination(1);
-        if (this.props.pagingType === 'photos' || this.props.pagingType === 'search_photos') {
-            this.props.requestSearchPhotos(this.props.currentPage, this.state.keyword);
+        requestPagination(1);
+        if (pagingType === 'photos' || pagingType === 'search_photos') {
+            requestSearchPhotos(currentPage, this.state.keyword);
         }
-        else if (this.props.pagingType === 'collections' || this.props.pagingType === 'search_collections') {
-            this.props.requestSearchCollections(this.props.currentPage, this.state.keyword);
+        else if (pagingType === 'collections' || pagingType === 'search_collections') {
+            requestSearchCollections(currentPage, this.state.keyword);
         }
     }
 
@@ -73,7 +75,6 @@ class Search extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        photos: Object.values(state.photos),
         currentPage: state.currentPage,
         pagingType: state.pagingType
     }

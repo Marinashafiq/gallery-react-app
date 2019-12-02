@@ -10,45 +10,46 @@ import {
     requestCollectionPhotos
 } from '../../store/actions/index';
 class Pagination extends React.Component {
-
     getNext = () => {
-        let nextPage = this.props.currentPage + 1;
-        this.props.requestPagination(nextPage);
-        if (this.props.pagingType === 'photos') {
-            this.props.requestPhotos(nextPage);
+        const { collectionsId , searchKeyword , requestPagination , requestPhotos , requestSearchCollections , requestSearchPhotos , currentPage , pagingType } = this.props;
+        let nextPage = currentPage + 1;
+        requestPagination(nextPage);
+        if (pagingType === 'photos') {
+            requestPhotos(nextPage);
         }
-        else if (this.props.pagingType === 'search_photos') {
-            this.props.requestSearchPhotos(nextPage, this.props.searchKeyword.keyword);
+        else if (pagingType === 'search_photos') {
+            requestSearchPhotos(nextPage, searchKeyword.keyword);
         }
-        else if (this.props.pagingType === 'collections') {
-            this.props.requestCollection(nextPage);
+        else if (pagingType === 'collections') {
+            requestCollection(nextPage);
         }
-        else if (this.props.pagingType === 'search_collections') {
-            this.props.requestSearchCollections(nextPage, this.props.searchKeyword.keyword);
+        else if (pagingType === 'search_collections') {
+            requestSearchCollections(nextPage,searchKeyword.keyword);
         }
-        else if (this.props.pagingType === 'collection-photos') {
-            this.props.requestCollectionPhotos(nextPage, this.props.collectionsId);
+        else if (pagingType === 'collection-photos') {
+            requestCollectionPhotos(nextPage, collectionsId);
         }
     }
 
-    getPrev = () => {
-        if (this.props.currentPage > 1) {
-            let prevPage = this.props.currentPage - 1;
-            this.props.requestPagination(prevPage);
-            if (this.props.pagingType === 'photos') {
-                this.props.requestPhotos(prevPage);
+    getPrev = () => {        
+        const { collectionsId , searchKeyword , requestPagination , requestPhotos , requestSearchCollections , requestSearchPhotos , currentPage , pagingType } = this.props;
+        if (currentPage > 1) {
+            let prevPage = currentPage - 1;
+            requestPagination(prevPage);
+            if (pagingType === 'photos') {
+                requestPhotos(prevPage);
             }
-            else if (this.props.pagingType === 'search_photos') {
-                this.props.requestSearchPhotos(prevPage, this.props.searchKeyword.keyword);
+            else if (pagingType === 'search_photos') {
+               requestSearchPhotos(prevPage, searchKeyword.keyword);
             }
-            else if (this.props.pagingType === 'collections') {
-                this.props.requestCollection(prevPage);
+            else if (pagingType === 'collections') {
+               requestCollection(prevPage);
             }
-            else if (this.props.pagingType === 'search_collections') {
-                this.props.requestSearchCollections(prevPage, this.props.searchKeyword.keyword);
+            else if (pagingType === 'search_collections') {
+                requestSearchCollections(prevPage, searchKeyword.keyword);
             }
-            else if (this.props.pagingType === 'collection-photos') {
-                this.props.requestCollectionPhotos(prevPage, this.props.collectionsId);
+            else if (pagingType === 'collection-photos') {
+                requestCollectionPhotos(prevPage, collectionsId);
             }
         }
     }

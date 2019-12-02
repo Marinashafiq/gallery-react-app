@@ -5,26 +5,30 @@ import GalleryCard from '../../components/card/GalleryCard';
 
 class PhotosList extends React.Component {
     componentDidMount() {
-        this.props.requestPhotos(1);
+        const { requestPhotos } = this.props ;
+        requestPhotos(1);
     }
 
     downloadImage = (imageId) => {
-        this.props.requestDownloadPhoto(imageId);
+        const { requestDownloadPhoto } = this.props ;
+        requestDownloadPhoto(imageId);
     }
 
     renderPhotosList = () => {
         return this.props.photos.map(photo => {
-            photo.created_at = this.convertTime(photo.created_at);
+            const { id , urls , description , likes , user } = photo ;
+            let { created_at } = photo ;
+            created_at = this.convertTime(photo.created_at);
             return (
                 <GalleryCard
-                    id={photo.id}
-                    key={photo.id}
-                    url={photo.urls.full}
-                    name={photo.id}
-                    created_at={photo.created_at}
-                    description={photo.description}
-                    likes={photo.likes}
-                    user={photo.user}
+                    id={id}
+                    key={id}
+                    url={urls.full}
+                    name={id}
+                    created_at={created_at}
+                    description={description}
+                    likes={likes}
+                    user={user}
                     downloadImageId={this.downloadImage}
                 />
             )
@@ -50,9 +54,7 @@ class PhotosList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        photos: Object.values(state.photos),
-        currentPage: state.currentPage,
-        pagingType: state.pagingType
+        photos: Object.values(state.photos)
     }
 }
 

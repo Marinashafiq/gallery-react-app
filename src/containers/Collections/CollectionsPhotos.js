@@ -11,22 +11,25 @@ import CardDeck from 'react-bootstrap/CardDeck';
 class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
-        this.props.requestCollectionPhotos(1, this.props.computedMatch.params.id);
-        this.props.requestCollectionId(this.props.computedMatch.params.id);
-        this.props.requestRelatedCollections(1, this.props.computedMatch.params.id);
+        const { requestCollectionPhotos  , requestCollectionId , requestRelatedCollections } = this.props ;
+        requestCollectionPhotos(1, this.props.computedMatch.params.id);
+        requestCollectionId(this.props.computedMatch.params.id);
+        requestRelatedCollections(1, this.props.computedMatch.params.id);
     }
 
     downloadImage = (imageId) => {
-        this.props.requestDownloadPhoto(imageId);
+        const { requestDownloadPhoto } = this.props ;
+        requestDownloadPhoto(imageId);
     }
 
     renderPhotosList = () => {
-        if (!this.props.collectionPhotos) {
+        const { collectionPhotos } = this.props ;
+        if (!collectionPhotos) {
             return (
                 <div>Loading ...</div>
             )
         }
-        return this.props.collectionPhotos.map(photo => {
+        return collectionPhotos.map(photo => {
             photo.created_at = this.convertTime(photo.created_at)
             return (
                 <GalleryCard
@@ -47,13 +50,14 @@ class CollectionsPhotos extends React.Component {
 
     renderRelatedCollections = () => {
         console.log(this.props.relatedCollections)
-        if (!this.props.relatedCollections) {
+        const { relatedCollections } = this.props ;
+        if (!relatedCollections) {
             return (
                 <div> Still Loading ... </div>
             )
         }
         else {
-            return this.props.relatedCollections.map(photo => {
+            return relatedCollections.map(photo => {
                 return (
                     <Col key={photo.id}>
                         <CollectionCard
@@ -109,7 +113,6 @@ class CollectionsPhotos extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         collectionPhotos: Object.values(state.collectionPhotos),
         relatedCollections: Object.values(state.relatedCollections)
