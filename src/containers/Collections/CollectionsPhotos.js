@@ -22,6 +22,18 @@ class CollectionsPhotos extends React.Component {
         requestDownloadPhoto(imageId);
     }
 
+    componentDidUpdate(prevProps) {
+        const { requestCollectionPhotos  , requestCollectionId , requestRelatedCollections } = this.props ;
+        if (
+          prevProps.computedMatch.params.id !== this.props.computedMatch.params.id
+        ) {
+            console.log("CHANGEDDDDD");
+            requestCollectionPhotos(1, this.props.computedMatch.params.id);
+            requestCollectionId(this.props.computedMatch.params.id);
+            requestRelatedCollections(1, this.props.computedMatch.params.id);
+        }
+      }
+
     renderPhotosList = () => {
         const { collectionPhotos } = this.props ;
         if (!collectionPhotos) {
