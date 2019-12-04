@@ -9,7 +9,7 @@ import Pagination from '../pagination/Pagination';
 import '../search/Search.scss';
 import history from '../../routes/history';
 import { requestCollection , requestPhotos} from '../../store/actions';
-
+import './Home.scss';
 class Home extends React.Component {
 
     componentDidMount(){
@@ -53,15 +53,16 @@ class Home extends React.Component {
             renderedComponent = <CollectionList />
         }
         return (
-            <div>
+            <div className="homeBg">
                 <Header />
-                <Container className="my-5">
+                {/* <RandomImages /> */}
+                {/* <Container className="my-5">
                     {this.renderSearchHeader()}
                     <CardColumns className="my-5">
                         {renderedComponent}
                     </CardColumns>
                     <Pagination />
-                </Container>
+                </Container> */}
             </div>
         )
     }
