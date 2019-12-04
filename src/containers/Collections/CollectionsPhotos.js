@@ -65,7 +65,7 @@ class CollectionsPhotos extends React.Component {
         const { relatedCollections } = this.props ;
         if (!relatedCollections) {
             return (
-                <div> Still Loading ... </div>
+                <div className="text-white"> Still Loading ... </div>
             )
         }
         else {

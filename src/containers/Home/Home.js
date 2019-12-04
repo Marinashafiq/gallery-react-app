@@ -9,6 +9,22 @@ import Pagination from '../pagination/Pagination';
 import '../search/Search.scss';
 
 class Home extends React.Component {
+
+    renderSearchHeader = () =>{
+        console.log("SEARCH HEADER")
+        if(this.props.pagingType === 'search_photos' || this.props.pagingType === 'search_collections' ){
+        console.log("SEARCH HEADER")
+            
+            console.log(this.props.searchKeyword);
+            return(
+                <div>
+                    <h2 className="text-white mb-0">Search Results</h2>
+                    <p className="text-warning mb-0">{this.props.searchKeyword.keyword}</p>
+                </div>
+            )
+        }
+    }
+
     render() {
         let renderedComponent;
         const { pagingType } = this.props ;
@@ -22,6 +38,7 @@ class Home extends React.Component {
             <div>
                 <Header />
                 <Container className="my-5">
+                    {this.renderSearchHeader()}
                     <CardColumns className="my-5">
                         {renderedComponent}
                     </CardColumns>
@@ -33,8 +50,10 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        pagingType: state.pagingType
+        pagingType: state.pagingType,
+        searchKeyword : state.searchKeyword
     }
 }
 

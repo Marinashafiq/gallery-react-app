@@ -20,7 +20,17 @@ class Search extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.pagingType !== this.props.pagingType){
+            console.log("CLEAR");
+            this.setState({
+                keyword : ""
+            })
+        }
+    }
+
     handleChange = (e) => {
+        console.log(e);
         const { pagingType , requestPhotos , requestCollection } = this.props ;
         this.setState({
             keyword: e.target.value
@@ -42,7 +52,10 @@ class Search extends React.Component {
 
     onSubmit = (e) => {
         const { pagingType , currentPage , requestSearchPhotos , requestSearchCollections , requestPagination} = this.props ;
-        e.preventDefault();
+        // e.preventDefault();
+        // var code = e.keyCode || e.which;
+        //     if(code === 13) { //13 is the enter keycode
+        //Do stuff in here
         requestPagination(1);
         if (pagingType === 'photos' || pagingType === 'search_photos') {
             requestSearchPhotos(currentPage, this.state.keyword);
@@ -50,6 +63,8 @@ class Search extends React.Component {
         else if (pagingType === 'collections' || pagingType === 'search_collections') {
             requestSearchCollections(currentPage, this.state.keyword);
         }
+    // } 
+        
     }
 
 
@@ -59,6 +74,7 @@ class Search extends React.Component {
                 <div className="d-flex search-input">
                     <InputGroup size="lg" className="mr-3">
                         <FormControl
+                            value = {this.state.keyword}
                             aria-label="Large"
                             onChange={e => this.handleChange(e)}
                             placeholder="Search for images with keywords ( Sky , love .. etc )"
@@ -76,7 +92,8 @@ class Search extends React.Component {
 const mapStateToProps = (state) => {
     return {
         currentPage: state.currentPage,
-        pagingType: state.pagingType
+        pagingType: state.pagingType , 
+        searchKeyword: state.searchKeyword
     }
 }
 
