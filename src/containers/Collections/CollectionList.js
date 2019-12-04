@@ -7,6 +7,7 @@ import '../search/Search.scss';
 
 class PhotosList extends React.Component {
     componentDidMount() {
+        console.log("HELLOOO COLECTION")
         const { requestCollection } = this.props ;
         requestCollection(1);
     }

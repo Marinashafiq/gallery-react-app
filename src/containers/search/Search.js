@@ -71,7 +71,7 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <div className="d-flex search-input">
+                <div className="d-flex search-input mt-4">
                     <InputGroup size="lg" className="mr-3">
                         <FormControl
                             value = {this.state.keyword}

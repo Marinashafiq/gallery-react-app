@@ -29,3 +29,8 @@ body{
 .border-raduis-3{
     border-radius: 3em !important;
 }
+
+.photosContainer{
+    width: 90%;
+    margin: 0 auto;
+}

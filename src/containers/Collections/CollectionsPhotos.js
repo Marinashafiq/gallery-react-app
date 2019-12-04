@@ -1,41 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections , requestPagination } from '../../store/actions/index';
+import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections, requestPagination } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 import { Container, Row, Col } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Pagination from '../pagination/Pagination';
 import CollectionCard from '../../components/collection-card/CollectionCard';
 import CardDeck from 'react-bootstrap/CardDeck';
+import Navigation from '../../containers/navigation/Navigation';
 
 class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
-        const { requestCollectionPhotos  , requestCollectionId , requestRelatedCollections } = this.props ;
+        const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections } = this.props;
         requestCollectionPhotos(1, this.props.computedMatch.params.id);
         requestCollectionId(this.props.computedMatch.params.id);
         requestRelatedCollections(1, this.props.computedMatch.params.id);
     }
 
     downloadImage = (imageId) => {
-        const { requestDownloadPhoto } = this.props ;
+        const { requestDownloadPhoto } = this.props;
         requestDownloadPhoto(imageId);
     }
 
     componentDidUpdate(prevProps) {
-        const { requestCollectionPhotos  , requestCollectionId , requestRelatedCollections , requestPagination } = this.props ;
+        const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections, requestPagination } = this.props;
         if (
-          prevProps.computedMatch.params.id !== this.props.computedMatch.params.id
+            prevProps.computedMatch.params.id !== this.props.computedMatch.params.id
         ) {
             requestCollectionPhotos(1, this.props.computedMatch.params.id);
             requestPagination(1);
             requestCollectionId(this.props.computedMatch.params.id);
             requestRelatedCollections(1, this.props.computedMatch.params.id);
         }
-      }
+    }
 
     renderPhotosList = () => {
-        const { collectionPhotos } = this.props ;
+        const { collectionPhotos } = this.props;
         if (!collectionPhotos) {
             return (
                 <div>Loading ...</div>
@@ -62,7 +63,7 @@ class CollectionsPhotos extends React.Component {
 
     renderRelatedCollections = () => {
         console.log(this.props.relatedCollections)
-        const { relatedCollections } = this.props ;
+        const { relatedCollections } = this.props;
         if (!relatedCollections) {
             return (
                 <div className="text-white"> Still Loading ... </div>
@@ -71,7 +72,7 @@ class CollectionsPhotos extends React.Component {
         else {
             return relatedCollections.map(photo => {
                 return (
-                    <Col key={photo.id}>
+                    <Col xs={12} key={photo.id}>
                         <CollectionCard
                             id={photo.id}
                             key={photo.id}
@@ -97,28 +98,37 @@ class CollectionsPhotos extends React.Component {
     render() {
         return (
             <div>
-                <Container className="my-5">
-                    <h2 className="text-white">Collection's Photos</h2>
-                    <blockquote className="blockquote mb-0 text-white">
-                        <small>
-                            {' '}
-                            The picture that you took with your camera is the imagination you want to create with reality.{' '}
-                        </small>
-                        <footer className="blockquote-footer text-left">
-                            Scott Lorenzo
-                    </footer>
-                    </blockquote>
-                    <h6 className="text-white mt-4">Related Collections</h6>
+                <div className="photosContainer my-5">
                     <Row>
-                        <CardDeck>
-                            {this.renderRelatedCollections()}
-                        </CardDeck>
+                        <Col md={3}>
+                        <Navigation />
+                        <h5 className="text-warning mt-4">Related Collections</h5>
+                            <Row>                               
+                                {this.renderRelatedCollections()}
+                            </Row>
+                        </Col>
+                        <Col md={9}>
+                            <h2 className="text-white">Collection's Photos</h2>
+                            <blockquote className="blockquote mb-0 text-white">
+                                <small>
+                                    {' '}
+                                    The picture that you took with your camera is the imagination you want to create with reality.{' '}
+                                </small>
+                                <footer className="blockquote-footer text-left">
+                                    Scott Lorenzo
+                                </footer>
+                            </blockquote>
+                            
+                            
+                            <CardColumns className="my-5">
+                                {this.renderPhotosList()}
+                            </CardColumns>
+                            <Pagination />
+                        </Col>
                     </Row>
-                    <CardColumns className="my-5">
-                        {this.renderPhotosList()}
-                    </CardColumns>
-                    <Pagination />
-                </Container>
+
+
+                </div>
             </div>
         )
     }
@@ -131,4 +141,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { requestPagination , requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections })(CollectionsPhotos);
+export default connect(mapStateToProps, { requestPagination, requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections })(CollectionsPhotos);

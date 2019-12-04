@@ -3,7 +3,7 @@ import Search from '../../containers/search/Search';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { Container } from 'react-bootstrap';
 import './Header.scss';
-import Navigation from '../../containers/navigation/Navigation'
+import Navigation from '../../containers/navigation/Navigation';
 
 const Header = () => {
     return (

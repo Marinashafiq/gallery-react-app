@@ -7,8 +7,26 @@ import CardColumns from 'react-bootstrap/CardColumns';
 import Header from '../../components/header/Header';
 import Pagination from '../pagination/Pagination';
 import '../search/Search.scss';
+import history from '../../routes/history';
+import { requestCollection , requestPhotos} from '../../store/actions';
 
 class Home extends React.Component {
+
+    componentDidMount(){
+        console.log(history);
+        if(history.location.pathname === '/collections'){
+            this.props.requestCollection(1);
+        }
+        else if(history.location.pathname === '/'){
+            this.props.requestPhotos(1);
+        }
+    }
+
+    componentDidUpdate(){
+        if(history.location.pathname === '/'){
+            this.props.requestPhotos(1);
+        }
+    }
 
     renderSearchHeader = () =>{
         console.log("SEARCH HEADER")
@@ -57,4 +75,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps , {requestCollection , requestPhotos})(Home);

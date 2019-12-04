@@ -6,6 +6,7 @@ const CollectionsPhotos = lazy(() => import('../containers/Collections/Collectio
 
 
 export const Routes = () => {
+    console.log(history);
     return (
         <Router history={history}>
             <div>
