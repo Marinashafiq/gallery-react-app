@@ -61,7 +61,9 @@ function* getSearchCollections(action) {
 // GET PHOTOS OF SPECIFIC COLLECTION
 function* getCollectionPhotos(action) {
     try {
+        console.log(action);
         const response = yield call(api.getCollectionPhotos, action.payload.page, action.payload.id);
+        console.log(response);
         yield put({ type: RECEIVE_COLLECTION_PHOTOS, payload: response.data });
     } catch (err) {
         console.log(err);

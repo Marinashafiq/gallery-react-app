@@ -3,6 +3,7 @@ import {
 } from '../actions/types';
 
 export default (state = {}, action) => {
+    console.log(action);
     switch (action.type) {
         case REQUEST_COLLECTION_ID:
             return action.payload;

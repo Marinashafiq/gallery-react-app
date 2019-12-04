@@ -66,6 +66,7 @@ export const requestSearchCollections = (page, keyword) => {
 };
 
 export const requestCollectionPhotos = (page, id) => {
+    console.log(page , id);
     return {
         type: REQUEST_COLLECTION_PHOTOS,
         payload: {
@@ -76,6 +77,7 @@ export const requestCollectionPhotos = (page, id) => {
 };
 
 export const receiveCollectionsPhotos = (data) => {
+    console.log(data);
     return {
         type: RECEIVE_COLLECTION_PHOTOS,
         payload: data

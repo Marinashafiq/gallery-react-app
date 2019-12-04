@@ -11,7 +11,15 @@ import {
 } from '../../store/actions/index';
 class Pagination extends React.Component {
     getNext = () => {
-        const { collectionsId , searchKeyword , requestPagination , requestPhotos , requestSearchCollections , requestSearchPhotos , currentPage , pagingType } = this.props;
+        const { collectionsId , 
+            searchKeyword , 
+            requestPagination , 
+            requestPhotos , 
+            requestSearchCollections , 
+            requestSearchPhotos , 
+            currentPage , 
+            pagingType , 
+            requestCollectionPhotos } = this.props;
         let nextPage = currentPage + 1;
         requestPagination(nextPage);
         if (pagingType === 'photos') {
@@ -27,12 +35,21 @@ class Pagination extends React.Component {
             requestSearchCollections(nextPage,searchKeyword.keyword);
         }
         else if (pagingType === 'collection-photos') {
+            console.log(pagingType , nextPage , collectionsId);
             requestCollectionPhotos(nextPage, collectionsId);
         }
     }
 
     getPrev = () => {        
-        const { collectionsId , searchKeyword , requestPagination , requestPhotos , requestSearchCollections , requestSearchPhotos , currentPage , pagingType } = this.props;
+        const { collectionsId , 
+            searchKeyword , 
+            requestPagination , 
+            requestPhotos , 
+            requestSearchCollections , 
+            requestSearchPhotos , 
+            currentPage , 
+            pagingType ,
+            requestCollectionPhotos } = this.props;
         if (currentPage > 1) {
             let prevPage = currentPage - 1;
             requestPagination(prevPage);

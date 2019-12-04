@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections } from '../../store/actions/index';
+import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections , requestPagination } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 import { Container, Row, Col } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
@@ -23,12 +23,12 @@ class CollectionsPhotos extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { requestCollectionPhotos  , requestCollectionId , requestRelatedCollections } = this.props ;
+        const { requestCollectionPhotos  , requestCollectionId , requestRelatedCollections , requestPagination } = this.props ;
         if (
           prevProps.computedMatch.params.id !== this.props.computedMatch.params.id
         ) {
-            console.log("CHANGEDDDDD");
             requestCollectionPhotos(1, this.props.computedMatch.params.id);
+            requestPagination(1);
             requestCollectionId(this.props.computedMatch.params.id);
             requestRelatedCollections(1, this.props.computedMatch.params.id);
         }
@@ -131,4 +131,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections })(CollectionsPhotos);
+export default connect(mapStateToProps, { requestPagination , requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections })(CollectionsPhotos);
