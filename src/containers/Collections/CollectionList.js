@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestCollection } from '../../store/actions';
+import { requestCollection , requestPagingType} from '../../store/actions';
 import CollectionCard from '../../components/collection-card/CollectionCard';
 import '../search/Search.scss';
 
@@ -8,8 +8,9 @@ import '../search/Search.scss';
 class PhotosList extends React.Component {
     componentDidMount() {
         console.log("HELLOOO COLECTION")
-        const { requestCollection } = this.props ;
-        requestCollection(1);
+        const { requestCollection , requestPagingType } = this.props ;
+        // requestCollection(1);
+        requestPagingType('search-collections');
     }
 
     renderCollectionList = () => {
@@ -58,4 +59,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { requestCollection })(PhotosList);
+export default connect(mapStateToProps, { requestCollection , requestPagingType})(PhotosList);
