@@ -3,7 +3,8 @@ import { Router, Switch } from "react-router-dom";
 import history from './history';
 const Home = lazy(() => import('../containers/Home/Home'));
 const CollectionsPhotos = lazy(() => import('../containers/Collections/CollectionsPhotos'));
-
+const CollectionList = lazy(() => import('../containers/Collections/CollectionList'));
+const SearchResults = lazy(() => import('../containers/SearchResults/SearchResults'));
 
 export const Routes = () => {
     console.log(history);
@@ -13,7 +14,8 @@ export const Routes = () => {
                 <Suspense fallback={<h1>Still Loading…</h1>}>
                     <Switch>
                         <Home path="/" exact />
-                        <Home path="/collections" exact />
+                        <SearchResults path="/photos/:keyword" exact />
+                        <CollectionList path="/collections/:keyword" exact />
                         <CollectionsPhotos path="/collections/:id" exact />
                     </Switch>
                 </Suspense>

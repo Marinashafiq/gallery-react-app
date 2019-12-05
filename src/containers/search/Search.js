@@ -10,6 +10,7 @@ import {
     requestSearchCollections, 
     requestCollection,
     requestPagination } from '../../store/actions';
+import history from '../../routes/history';
 
 class Search extends React.Component {
 
@@ -31,7 +32,7 @@ class Search extends React.Component {
 
     handleChange = (e) => {
         console.log(e);
-        const { pagingType , requestPhotos , requestCollection } = this.props ;
+        // const { pagingType , requestPhotos , requestCollection } = this.props ;
         this.setState({
             keyword: e.target.value
         })
@@ -39,32 +40,23 @@ class Search extends React.Component {
             this.setState({
                 keyword: ""
             })
-            if (pagingType === 'photos' || pagingType === 'search_photos') {
-                requestPhotos(1);
-                e.target.value = '';
-            }
-            else if (pagingType === 'collections' || pagingType === 'search_collections') {
-                requestCollection(1);
-                e.target.value = '';
-            }
+            // if (pagingType === 'photos' || pagingType === 'search_photos') {
+            //     requestPhotos(1);
+            //     e.target.value = '';
+            // }
+            // else if (pagingType === 'collections' || pagingType === 'search_collections') {
+            //     requestCollection(1);
+            //     e.target.value = '';
+            // }
         }
     }
 
     onSubmit = (e) => {
         const { pagingType , currentPage , requestSearchPhotos , requestSearchCollections , requestPagination} = this.props ;
-        // e.preventDefault();
-        // var code = e.keyCode || e.which;
-        //     if(code === 13) { //13 is the enter keycode
-        //Do stuff in here
-        requestPagination(1);
-        if (pagingType === 'photos' || pagingType === 'search_photos') {
-            requestSearchPhotos(currentPage, this.state.keyword);
-        }
-        else if (pagingType === 'collections' || pagingType === 'search_collections') {
-            requestSearchCollections(currentPage, this.state.keyword);
-        }
-    // } 
-        
+        // requestPagination(1);
+        // requestSearchPhotos(currentPage, this.state.keyword);
+        // requestSearchCollections(currentPage, this.state.keyword);
+        history.push(`/photos/${this.state.keyword}`);       
     }
 
 
@@ -82,7 +74,7 @@ class Search extends React.Component {
                             aria-describedby="inputGroup-sizing-sm" />
                     </InputGroup>
 
-                    <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white px-5">Search</Button>
+                    <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button>
                 </div>
             </div>
         )

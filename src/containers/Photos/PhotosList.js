@@ -4,10 +4,10 @@ import { requestPhotos, requestDownloadPhoto } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 
 class PhotosList extends React.Component {
-    componentDidMount() {
-        const { requestPhotos } = this.props ;
-        requestPhotos(1);
-    }
+    // componentDidMount() {
+    //     const { requestPhotos } = this.props ;
+    //     requestPhotos(1);
+    // }
 
     downloadImage = (imageId) => {
         const { requestDownloadPhoto } = this.props ;
