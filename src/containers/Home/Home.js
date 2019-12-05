@@ -8,33 +8,48 @@ import Header from '../../components/header/Header';
 import Pagination from '../pagination/Pagination';
 import '../search/Search.scss';
 import history from '../../routes/history';
-import { requestCollection , requestPhotos} from '../../store/actions';
+import { requestCollection, requestPhotos } from '../../store/actions';
 import './Home.scss';
+import KeywordChip from '../../components/keyword-chip/KeywordChip';
 class Home extends React.Component {
 
-    componentDidMount(){
+    
+
+
+    componentDidMount() {
         console.log(history);
-        if(history.location.pathname === '/collections'){
+        if (history.location.pathname === '/collections') {
             this.props.requestCollection(1);
         }
-        else if(history.location.pathname === '/'){
+        else if (history.location.pathname === '/') {
             this.props.requestPhotos(1);
         }
     }
 
-    componentDidUpdate(){
-        if(history.location.pathname === '/'){
+    componentDidUpdate() {
+        if (history.location.pathname === '/') {
             this.props.requestPhotos(1);
         }
     }
 
-    renderSearchHeader = () =>{
-        console.log("SEARCH HEADER")
-        if(this.props.pagingType === 'search_photos' || this.props.pagingType === 'search_collections' ){
-        console.log("SEARCH HEADER")
-            
-            console.log(this.props.searchKeyword);
+
+    renderChips = () => {
+        const keywords = ['love' , 'wallpaper' , 'Nature' , 'Current Events' , 'Film' , 'Dark' , 'Black & White' , 'Travel' , 'fashion' , 'Kids']
+        return keywords.map(keyword => {
+            console.log(keyword);
             return(
+                <KeywordChip name={keyword}/>
+            )
+        })
+    }
+
+    renderSearchHeader = () => {
+        console.log("SEARCH HEADER")
+        if (this.props.pagingType === 'search_photos' || this.props.pagingType === 'search_collections') {
+            console.log("SEARCH HEADER")
+
+            console.log(this.props.searchKeyword);
+            return (
                 <div>
                     <h2 className="text-white mb-0">Search Results</h2>
                     <p className="text-warning mb-0">{this.props.searchKeyword.keyword}</p>
@@ -45,7 +60,7 @@ class Home extends React.Component {
 
     render() {
         let renderedComponent;
-        const { pagingType } = this.props ;
+        const { pagingType } = this.props;
         if (pagingType === 'photos' || pagingType === 'search_photos') {
             renderedComponent = <PhotosList />
         }
@@ -54,7 +69,12 @@ class Home extends React.Component {
         }
         return (
             <div className="homeBg">
-                <Header />
+                <Container className="text-center d-flex h-100 align-items-center">
+                    <div className="w-100">
+                        <Header />
+                        {this.renderChips()}
+                    </div>
+                </Container>
                 {/* <RandomImages /> */}
                 {/* <Container className="my-5">
                     {this.renderSearchHeader()}
@@ -72,8 +92,8 @@ const mapStateToProps = (state) => {
     console.log(state);
     return {
         pagingType: state.pagingType,
-        searchKeyword : state.searchKeyword
+        searchKeyword: state.searchKeyword
     }
 }
 
-export default connect(mapStateToProps , {requestCollection , requestPhotos})(Home);
+export default connect(mapStateToProps, { requestCollection, requestPhotos })(Home);

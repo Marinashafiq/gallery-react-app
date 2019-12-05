@@ -1,0 +1,11 @@
+.keywordsChip{
+    border : 2px solid #ffc107 ;
+    background : transparent  ;
+    color:white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+        background : #ffc107;
+    }
+}
