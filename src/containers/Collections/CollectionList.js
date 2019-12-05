@@ -5,10 +5,10 @@ import CollectionCard from '../../components/collection-card/CollectionCard';
 import '../search/Search.scss';
 
 
-class PhotosList extends React.Component {
+class CollectionList extends React.Component {
     componentDidMount() {
         console.log("HELLOOO COLECTION")
-        const { requestCollection , requestPagingType } = this.props ;
+        const { requestPagingType } = this.props ;
         // requestCollection(1);
         requestPagingType('search-collections');
     }
@@ -59,4 +59,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { requestCollection , requestPagingType})(PhotosList);
+export default connect(mapStateToProps, { requestCollection , requestPagingType})(CollectionList);

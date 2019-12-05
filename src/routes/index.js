@@ -15,8 +15,8 @@ export const Routes = () => {
                     <Switch>
                         <Home path="/" exact />
                         <SearchResults path="/photos/:keyword" exact />
-                        <CollectionList path="/collections/:keyword" exact />
                         <CollectionsPhotos path="/collections/:id" exact />
+                        <CollectionList path="/collections/:keyword" exact />
                     </Switch>
                 </Suspense>
             </div>
