@@ -25,8 +25,8 @@ class Navigation extends React.Component {
         const { pagingType } = this.props;
         return (
             <div className="text-white text-center d-flex justify-content-center">
-                <Nav.Link to={"/photos"} onClick={this.getPhotos}>Photos</Nav.Link>
-                <Nav.Link to={"/collections"} onClick={this.getCollections}>Collections</Nav.Link>
+                <Link to="/photos" onClick={this.getPhotos} className={this.props.pagingType == 'photos' ? 'text-warning' : 'text-white'}>Photos</Link>
+                <Link to="/collections" onClick={this.getCollections} className={this.props.pagingType == 'collections' ? 'text-warning mx-2' : 'text-white mx-2'}>Collections</Link>
             </div>
         )
     }
