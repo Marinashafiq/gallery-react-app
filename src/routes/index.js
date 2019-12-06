@@ -14,9 +14,11 @@ export const Routes = () => {
                 <Suspense fallback={<h1>Still Loading…</h1>}>
                     <Switch>
                         <Home path="/" exact />
-                        <SearchResults path="/photos/:keyword" exact />
+                        <SearchResults path="/search/:keyword" exact />
+                        <SearchResults path="/photos" exact />
+                        <SearchResults path="/collections" exact />
                         <CollectionsPhotos path="/collections/:id" exact />
-                        <CollectionList path="/collections/:keyword" exact />
+                        {/* <CollectionList path="/collections/:keyword" exact /> */}
                     </Switch>
                 </Suspense>
             </div>

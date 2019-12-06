@@ -42,6 +42,7 @@ export const requestSearchPhotos = (page, keyword) => {
 };
 
 export const requestCollection = (page) => {
+    console.log(page);
     return {
         type: REQUEST_COLLECTIONS,
         payload: page,

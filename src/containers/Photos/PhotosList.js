@@ -1,13 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestPhotos, requestDownloadPhoto } from '../../store/actions/index';
+import { requestPhotos, requestDownloadPhoto , requestPagingType } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
+import history from '../../routes/history';
 
 class PhotosList extends React.Component {
-    // componentDidMount() {
-    //     const { requestPhotos } = this.props ;
-    //     requestPhotos(1);
-    // }
+    componentDidMount() {
+        if(history.location.pathname == '/photos'){
+            console.log("PHOTOOOOOS")
+            const { requestPhotos , requestPagingType } = this.props ;
+            requestPhotos(1);
+            requestPagingType('photos')
+        }
+    }
 
     downloadImage = (imageId) => {
         const { requestDownloadPhoto } = this.props ;
@@ -59,4 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { requestPhotos, requestDownloadPhoto })(PhotosList);
+export default connect(mapStateToProps, { requestPhotos, requestDownloadPhoto , requestPagingType})(PhotosList);

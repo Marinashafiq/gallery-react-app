@@ -56,7 +56,7 @@ class Search extends React.Component {
         // requestPagination(1);
         // requestSearchPhotos(currentPage, this.state.keyword);
         // requestSearchCollections(currentPage, this.state.keyword);
-        history.push(`/photos/${this.state.keyword}`);       
+        history.push(`/search/${this.state.keyword}`);       
     }
 
 

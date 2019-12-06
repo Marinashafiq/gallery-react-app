@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { requestCollection , requestPagingType} from '../../store/actions';
 import CollectionCard from '../../components/collection-card/CollectionCard';
 import '../search/Search.scss';
+import history from '../../routes/history';
 
 
 class CollectionList extends React.Component {
     componentDidMount() {
-        console.log("HELLOOO COLECTION")
-        const { requestPagingType } = this.props ;
-        // requestCollection(1);
-        requestPagingType('search-collections');
+        if(history.location.pathname == '/collections'){
+            console.log("COLLECTIONSSSS")
+            const { requestCollection , requestPagingType } = this.props ;
+            requestCollection(1);
+            requestPagingType('collections')
+        }
     }
 
     renderCollectionList = () => {

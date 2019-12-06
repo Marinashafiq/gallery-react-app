@@ -14,10 +14,11 @@ class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
         console.log("COLLECTIONS PHOTOS");
-        const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections } = this.props;
+        const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections , requestPagination } = this.props;
         requestCollectionPhotos(1, this.props.computedMatch.params.id);
         requestCollectionId(this.props.computedMatch.params.id);
         requestRelatedCollections(1, this.props.computedMatch.params.id);
+        requestPagination(1);
     }
 
     downloadImage = (imageId) => {

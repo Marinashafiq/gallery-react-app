@@ -4,34 +4,29 @@ import './Navigation.scss';
 import { connect } from 'react-redux';
 import { requestCollection, requestPhotos, requestPagination, requestSearchCollections, requestSearchPhotos } from '../../store/actions';
 import { Link } from "react-router-dom";
+import {Nav} from 'react-bootstrap';
 
 class Navigation extends React.Component {
 
     getCollections = () => {
-        const { requestCollection , requestPagination , requestSearchCollections } = this.props ;
+        console.log("Casdsdasdkml")
+        const { requestCollection , requestPagination } = this.props ;
         requestCollection(1);
         requestPagination(1);
-        requestSearchCollections(1, "");
-
     }
 
     getPhotos = () => {
-        const { requestPhotos , requestPagination , requestSearchCollections } = this.props ;
+        const { requestPhotos , requestPagination } = this.props ;
         requestPhotos(1);
         requestPagination(1);
-        requestSearchCollections(1, "");
     }
 
     render() {
         const { pagingType } = this.props;
         return (
-            <div className="mt-5 text-white text-center d-flex justify-content-center">
-                <Button  onClick={this.getPhotos} variant={pagingType === "photos" || pagingType === "search_photos" ? "outline-warning" : "link"} >
-                    <Link to={"/"} className={"text-white px-5 mx-2"}>Photos</Link>
-                </Button>
-                <Button onClick={this.getCollections} variant={pagingType === "collections" || pagingType === "search_collections" ? "outline-warning" : "link"}>
-                    <Link to={"/collections"} className={"text-white px-5 mx-2"}>Collections</Link>
-                </Button>
+            <div className="text-white text-center d-flex justify-content-center">
+                <Nav.Link to={"/photos"} onClick={this.getPhotos}>Photos</Nav.Link>
+                <Nav.Link to={"/collections"} onClick={this.getCollections}>Collections</Nav.Link>
             </div>
         )
     }

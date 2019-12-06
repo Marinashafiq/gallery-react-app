@@ -1,14 +1,15 @@
 import React from 'react' ;
 import {Navbar , Nav , Form , FormControl , Button} from 'react-bootstrap';
 import './Navbar.scss';
+import Navigation from '../../containers/navigation/Navigation'
+
 const NavElement = () => {
 
     return(
         <Navbar sticky="top"  bg="dark" variant="dark">
             <Navbar.Brand href="/">Gallery</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="/photos">Photos</Nav.Link>
-                <Nav.Link href="/collections">Collections</Nav.Link>
+               <Navigation />
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />

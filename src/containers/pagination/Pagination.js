@@ -19,6 +19,7 @@ class Pagination extends React.Component {
             requestSearchPhotos , 
             currentPage , 
             pagingType , 
+            requestCollection ,
             requestCollectionPhotos } = this.props;
         let nextPage = currentPage + 1;
         requestPagination(nextPage);
@@ -29,6 +30,7 @@ class Pagination extends React.Component {
             requestSearchPhotos(nextPage, searchKeyword.keyword);
         }
         else if (pagingType === 'collections') {
+            console.log('collections')
             requestCollection(nextPage);
         }
         else if (pagingType === 'search_collections') {
