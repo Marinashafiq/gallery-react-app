@@ -10,6 +10,7 @@ import Pagination from '../pagination/Pagination';
 import NavElement from '../../components/navbar/Navbar';
 import {Tabs , Tab} from 'react-bootstrap'
 import './SearchResults.scss';
+import { request } from 'http';
 
 class SearchResults extends React.Component {
 
@@ -17,10 +18,21 @@ class SearchResults extends React.Component {
         if(history.location.pathname !== '/photos' && history.location.pathname !== '/collections'){
             console.log(history.location.pathname , "RESULTS")
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
-            this.props.requestPagingType('search-photos');
+            this.props.requestPagingType('search_photos');
         }
         else if ( history.location.pathname == '/collections'){
             this.props.requestCollection(this.props.currentPage);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(prevProps);
+        if(prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword){
+            console.log("CHANGE HAPPENED")
+            this.props.requestPagination(1);
+            console.log(this.props.computedMatch.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage , this.props.computedMatch.params.keyword);
+            this.props.requestPagingType('search_photos');
         }
     }
 
@@ -37,11 +49,11 @@ class SearchResults extends React.Component {
         this.props.requestPagination(1);
         if(key === 'photos') {
             this.props.requestSearchPhotos(this.props.currentPage , this.props.computedMatch.params.keyword);
-            this.props.requestPagingType('search-photos');    
+            this.props.requestPagingType('search_photos');    
         }
         else {
             this.props.requestSearchCollections(this.props.currentPage , this.props.computedMatch.params.keyword);
-            this.props.requestPagingType('search-collections');
+            this.props.requestPagingType('search_collections');
             
         }
     }

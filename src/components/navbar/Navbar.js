@@ -2,7 +2,7 @@ import React from 'react' ;
 import {Navbar , Nav , Form , FormControl , Button} from 'react-bootstrap';
 import './Navbar.scss';
 import Navigation from '../../containers/navigation/Navigation'
-
+import Search from '../../containers/search/Search';
 const NavElement = () => {
 
     return(
@@ -12,8 +12,7 @@ const NavElement = () => {
                <Navigation />
             </Nav>
             <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-warning"><i className="fa fa-search"></i></Button>
+                <Search />
             </Form>
         </Navbar>
     )

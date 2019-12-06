@@ -40,14 +40,6 @@ class Search extends React.Component {
             this.setState({
                 keyword: ""
             })
-            // if (pagingType === 'photos' || pagingType === 'search_photos') {
-            //     requestPhotos(1);
-            //     e.target.value = '';
-            // }
-            // else if (pagingType === 'collections' || pagingType === 'search_collections') {
-            //     requestCollection(1);
-            //     e.target.value = '';
-            // }
         }
     }
 
@@ -56,6 +48,9 @@ class Search extends React.Component {
         // requestPagination(1);
         // requestSearchPhotos(currentPage, this.state.keyword);
         // requestSearchCollections(currentPage, this.state.keyword);
+        this.setState({
+            keyword: e.target.value
+        })
         history.push(`/search/${this.state.keyword}`);       
     }
 
@@ -63,8 +58,14 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <div className="d-flex search-input mt-4">
-                    <InputGroup size="lg" className="mr-3">
+                <div className="d-flex search-input">
+                <FormControl 
+                    value = {this.state.keyword || ""}
+                    onChange={e => this.handleChange(e)}
+                    placeholder="Search in Gallery" 
+                    className="mr-sm-2" />
+                <Button variant="outline-warning" onClick={(e) => this.onSubmit(e)}><i className="fa fa-search"></i></Button>
+                    {/* <InputGroup size="lg" className="mr-3 mt-4">
                         <FormControl
                             value = {this.state.keyword}
                             aria-label="Large"
@@ -74,7 +75,7 @@ class Search extends React.Component {
                             aria-describedby="inputGroup-sizing-sm" />
                     </InputGroup>
 
-                    <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button>
+                    <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button> */}
                 </div>
             </div>
         )
