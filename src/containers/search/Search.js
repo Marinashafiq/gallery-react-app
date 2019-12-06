@@ -54,6 +54,19 @@ class Search extends React.Component {
         history.push(`/search/${this.state.keyword}`);       
     }
 
+    renderSearchButton = () => {
+        if(history.location.pathname == '/'){
+            return(
+                <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button>
+            )
+        }
+        else {
+            return(
+                <Button variant="outline-warning" className="border-raduis-3" onClick={(e) => this.onSubmit(e)}><i className="fa fa-search"></i></Button>
+            )
+        }
+    }
+
 
     render() {
         return (
@@ -63,8 +76,8 @@ class Search extends React.Component {
                     value = {this.state.keyword || ""}
                     onChange={e => this.handleChange(e)}
                     placeholder="Search in Gallery" 
-                    className="mr-sm-2" />
-                <Button variant="outline-warning" onClick={(e) => this.onSubmit(e)}><i className="fa fa-search"></i></Button>
+                    className="mr-sm-2 border-0 shadow border-raduis-3" />
+                    {this.renderSearchButton()}
                     {/* <InputGroup size="lg" className="mr-3 mt-4">
                         <FormControl
                             value = {this.state.keyword}
