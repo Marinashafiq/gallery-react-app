@@ -1,20 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import { requestCollection, requestPhotos } from '../../store/actions';
+// import { requestSearchPhotos } from '../../store/actions';
 import Header from '../../components/header/Header';
 import KeywordChip from '../../components/keyword-chip/KeywordChip';
 import '../search/Search.scss';
 import './Home.scss';
+import history from '../../routes/history';
 
 class Home extends React.Component {
 
+    searchWithChips = (keyword) => {
+        history.push(`/search/${keyword}`);       
+    }
 
     renderChips = () => {
         const keywords = ['love' , 'wallpaper' , 'Nature' , 'Current Events' , 'Film' , 'Dark' , 'Black & White' , 'Travel' , 'fashion' , 'Kids']
         return keywords.map(keyword => {
             return(
-                <KeywordChip key={keyword} name={keyword}/>
+                <KeywordChip 
+                    key={keyword} 
+                    name={keyword}
+                    searchWithChips={this.searchWithChips}/>
             )
         })
     }
@@ -34,12 +41,6 @@ class Home extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log(state);
-    return {
-        pagingType: state.pagingType,
-        searchKeyword: state.searchKeyword
-    }
-}
 
-export default connect(mapStateToProps, { requestCollection, requestPhotos })(Home);
+
+export default connect(null)(Home);

@@ -3,8 +3,14 @@ import './KeywordChip.scss';
 import Badge from 'react-bootstrap/Badge';
 
 const KeywordChip = (props) => {
+
+    const handleClick = (key) =>{
+        console.log(key)
+        props.searchWithChips(key);
+    }
+
     return(
-        <Badge pill variant="warning" className="keywordsChip mt-5 mx-4 px-4 py-3">
+        <Badge pill onClick={() => handleClick(props.name)} variant="warning" className="keywordsChip mt-5 mx-4 px-4 py-3">
             {props.name} +
         </Badge>
     )
