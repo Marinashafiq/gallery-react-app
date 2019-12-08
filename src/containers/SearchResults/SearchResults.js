@@ -4,30 +4,31 @@ import PhotosList from '../Photos/PhotosList';
 import CollectionList from '../Collections/CollectionList';
 import CardColumns from 'react-bootstrap/CardColumns';
 import { Container } from 'react-bootstrap';
-import { requestCollection , requestSearchPhotos, requestSearchCollections, requestPagingType , requestPagination } from '../../store/actions';
+import { requestCollection, requestSearchPhotos, requestSearchCollections, requestPagingType, requestPagination } from '../../store/actions';
 import history from '../../routes/history';
 import Pagination from '../pagination/Pagination';
 import NavElement from '../../components/navbar/Navbar';
-import {Tabs , Tab} from 'react-bootstrap'
+import { Tabs, Tab } from 'react-bootstrap'
 import './SearchResults.scss';
 import { request } from 'http';
 
 class SearchResults extends React.Component {
 
     componentDidMount() {
-        if(history.location.pathname !== '/photos' && history.location.pathname !== '/collections'){
+        console.log(this.props.pagingType);
+        if (history.location.pathname !== '/photos' && history.location.pathname !== '/collections') {
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
-        else if ( history.location.pathname == '/collections'){
+        else if (history.location.pathname == '/collections') {
             this.props.requestCollection(this.props.currentPage);
         }
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword){
+        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword) {
             this.props.requestPagination(1);
-            this.props.requestSearchPhotos(this.props.currentPage , this.props.computedMatch.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
     }
@@ -43,19 +44,19 @@ class SearchResults extends React.Component {
 
     handleSelect = (key) => {
         this.props.requestPagination(1);
-        if(key === 'photos') {
-            this.props.requestSearchPhotos(this.props.currentPage , this.props.computedMatch.params.keyword);
-            this.props.requestPagingType('search_photos');    
+        if (key === 'photos') {
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
+            this.props.requestPagingType('search_photos');
         }
         else {
-            this.props.requestSearchCollections(this.props.currentPage , this.props.computedMatch.params.keyword);
+            this.props.requestSearchCollections(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_collections');
-            
+
         }
     }
 
     renderSearchResults = () => {
-        return(
+        return (
             <div>
                 {this.renderSearchHeader()}
                 <Tabs className="mt-4" defaultActiveKey="photos" onSelect={this.handleSelect} id="uncontrolled-tab-example">
@@ -74,34 +75,58 @@ class SearchResults extends React.Component {
         )
     }
 
-    renderContent = () =>{
-        switch(this.props.pagingType) {
-            case 'search_photos' : 
+    renderContent = () => {
+        switch (this.props.pagingType) {
+            case 'search_photos':
                 return this.renderSearchResults();
-            case 'search_collections' :
+            case 'search_collections':
                 return this.renderSearchResults();
-            case 'photos' :
+            case 'photos':
                 return (
-                    <CardColumns className="my-5">
-                        <PhotosList />
-                    </CardColumns>
+                    <div>
+                        <h2 className="text-white font-weight-bold">Photos</h2>
+                        <small className="text-warning">Check latest photos in Gallery</small>
+                        <blockquote className="blockquote mb-0 text-secondary w-75">
+                            <small>
+                                {' '}
+                                Photography is a kind of virtual reality, and it helps if you can create the illusion of being in an interesting world.{' '}
+                            </small>
+                            <footer className="blockquote-footer text-left">
+                                Steven Pinker
+                            </footer>
+                        </blockquote>
+                        <CardColumns className="my-5">
+                            <PhotosList />
+                        </CardColumns>
+                    </div>
                 )
-            case 'collections' : 
+            case 'collections':
                 return (
-                    <CardColumns className="my-5">
-                        <CollectionList />
-                    </CardColumns>  
+                    <div>
+                        <h2 className="text-white font-weight-bold">Collections</h2>
+                        <small className="text-warning">Check latest collections in Gallery</small>
+                        <blockquote className="blockquote mb-0 text-secondary w-75">
+                            <small>
+                                {' '}
+                                Life is like a camera. Just focus on what’s important and capture the good times, develop from the negatives and if things don’t work out, just take another shot.{' '}
+                            </small>
+                        </blockquote>
+
+                        <CardColumns className="my-5">
+                            <CollectionList />
+                        </CardColumns>
+                    </div>
                 )
-            default : 
-                return null 
+            default:
+                return null
         }
     }
-    
+
     render() {
         return (
             <div>
                 <NavElement />
-                <Container className="my-5">
+                <Container className="my-4">
 
                     {this.renderContent()}
 
@@ -117,8 +142,8 @@ const mapStateToProps = (state) => {
     return {
         currentPage: state.currentPage,
         searchKeyword: state.searchKeyword,
-        pagingType : state.pagingType
+        pagingType: state.pagingType
     }
 }
 
-export default connect(mapStateToProps, { requestCollection , requestSearchCollections, requestSearchPhotos, requestPagingType , requestPagination})(SearchResults); 
+export default connect(mapStateToProps, { requestCollection, requestSearchCollections, requestSearchPhotos, requestPagingType, requestPagination })(SearchResults); 

@@ -1,12 +1,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltDown ,faHeart } from '@fortawesome/free-solid-svg-icons'
+import { useAlert } from 'react-alert'
+
 import './GalleryCard.scss';
 
 const GalleryCard = (props) => {
-
+    const alert = useAlert();
     function download() {
         props.downloadImageId(props.id)
+        alert.show('Thanks , Wait Downloading');
     }
 
     return (
@@ -21,7 +26,7 @@ const GalleryCard = (props) => {
                             <Image src={props.user.profile_image.small} roundedCircle />
                             <small className="mx-2">{props.user.name}</small>
                         </div>
-                    <i onClick={download} className="fa fa-arrow-down text-warning downloadIcon"></i>
+                    <FontAwesomeIcon onClick={download} icon={faLongArrowAltDown} className="text-warning downloadIcon"/>
                     </Card.Title>
                     <Card.Text>
                         {props.description}
@@ -29,7 +34,10 @@ const GalleryCard = (props) => {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between">
                     <small className="text-muted">{props.created_at}</small>
-                    <small className="text-muted"><i className="fa fa-heart mr-1"></i>{props.likes}</small>
+                    <small className="text-muted">
+                        <FontAwesomeIcon icon={faHeart} className="mr-1"/>
+                        {props.likes}
+                    </small>
                 </Card.Footer>
             </Card>
         </div>

@@ -42,20 +42,24 @@ class Search extends React.Component {
     }
 
     onSubmit = (e) => {
-        const { pagingType , currentPage , requestSearchPhotos , requestSearchCollections , requestPagination} = this.props ;
-        // requestPagination(1);
-        // requestSearchPhotos(currentPage, this.state.keyword);
-        // requestSearchCollections(currentPage, this.state.keyword);
         this.setState({
             keyword: e.target.value
         })
-        history.push(`/search/${this.state.keyword}`);       
+        if(this.state.keyword){
+            history.push(`/search/${this.state.keyword}`);       
+        }
+    }
+
+    onKeypress = (e) =>{
+        if(e.key == 'Enter'){
+            history.push(`/search/${this.state.keyword}`);       
+        }
     }
 
     renderSearchButton = () => {
         if(history.location.pathname == '/'){
             return(
-                <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button>
+                <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5 searchBtn">Search</Button>
             )
         }
         else {
@@ -65,16 +69,16 @@ class Search extends React.Component {
         }
     }
 
-
     render() {
         return (
-            <div>
-                <div className="d-flex search-input">
+            <div className="w-100">
+                <div className={'d-flex ' + (history.location.pathname == '/' ? 'search-input' : '')}>
                 <FormControl 
                     value = {this.state.keyword || ""}
                     onChange={e => this.handleChange(e)}
+                    onKeyPress={e => this.onKeypress(e)}
                     placeholder="Search in Gallery" 
-                    className="mr-sm-2 border-0 shadow border-raduis-3" />
+                    className="mr-2 border-0 shadow border-raduis-3" />
                     {this.renderSearchButton()}
                     {/* <InputGroup size="lg" className="mr-3 mt-4">
                         <FormControl
