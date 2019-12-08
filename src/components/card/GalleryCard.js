@@ -4,7 +4,8 @@ import Image from 'react-bootstrap/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltDown ,faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useAlert } from 'react-alert'
-
+import LazyImage from "react-lazy-progressive-image";
+import Loader from '../loader/Loader';
 import './GalleryCard.scss';
 
 const GalleryCard = (props) => {
@@ -18,7 +19,14 @@ const GalleryCard = (props) => {
         <div>
             <Card className="border-0 shadow mb-3">
                 <div className="zoom-in-image">
-                    <Card.Img variant="top"  src={props.url} />
+                <LazyImage
+                
+                    placeholder={"http://via.placeholder.com/300"}
+                    src={props.url}
+                >
+                    {(src, loading, isVisible) =><Card.Img variant="top"  src={src} />
+}
+                </LazyImage>
                 </div>
                 <Card.Body>
                     <Card.Title className="d-flex justify-content-between">
