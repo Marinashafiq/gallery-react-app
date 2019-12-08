@@ -9,7 +9,6 @@ import {Nav} from 'react-bootstrap';
 class Navigation extends React.Component {
 
     getCollections = () => {
-        console.log("Casdsdasdkml")
         const { requestCollection , requestPagination } = this.props ;
         requestCollection(1);
         requestPagination(1);

@@ -9,7 +9,6 @@ import history from '../../routes/history';
 class CollectionList extends React.Component {
     componentDidMount() {
         if(history.location.pathname == '/collections'){
-            console.log("COLLECTIONSSSS")
             const { requestCollection , requestPagingType } = this.props ;
             requestCollection(1);
             requestPagingType('collections')

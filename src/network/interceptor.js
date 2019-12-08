@@ -5,7 +5,6 @@ const isHandlerEnabled = (config = {}) => {
 
 export const requestHandler = (request) => {
     if (isHandlerEnabled(request)) {
-        // console.log("REQUEEST IS ON");
         document.body.classList.add('loading-indicator');
     }
     return request
@@ -13,14 +12,13 @@ export const requestHandler = (request) => {
 
 export const errorHandler = (error) => {
     if (isHandlerEnabled(error.config)) {
-        // console.log("Error request");
+        console.log("Request error")
     }
     return Promise.reject({ ...error })
 }
 
 export const successHandler = (response) => {
     if (isHandlerEnabled(response.config)) {
-        // console.log("request is end");
         document.body.classList.remove('loading-indicator');
     }
     return response

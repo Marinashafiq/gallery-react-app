@@ -23,7 +23,6 @@ class Search extends React.Component {
 
     componentDidUpdate(prevProps){
         if(prevProps.pagingType !== this.props.pagingType){
-            console.log("CLEAR");
             this.setState({
                 keyword : ""
             })
@@ -31,7 +30,6 @@ class Search extends React.Component {
     }
 
     handleChange = (e) => {
-        console.log(e);
         // const { pagingType , requestPhotos , requestCollection } = this.props ;
         this.setState({
             keyword: e.target.value

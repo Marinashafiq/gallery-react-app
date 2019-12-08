@@ -7,7 +7,6 @@ const CollectionList = lazy(() => import('../containers/Collections/CollectionLi
 const SearchResults = lazy(() => import('../containers/SearchResults/SearchResults'));
 
 export const Routes = () => {
-    console.log(history);
     return (
         <Router history={history}>
             <div>

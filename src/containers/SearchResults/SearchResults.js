@@ -16,7 +16,6 @@ class SearchResults extends React.Component {
 
     componentDidMount() {
         if(history.location.pathname !== '/photos' && history.location.pathname !== '/collections'){
-            console.log(history.location.pathname , "RESULTS")
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
@@ -26,11 +25,8 @@ class SearchResults extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps);
         if(prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword){
-            console.log("CHANGE HAPPENED")
             this.props.requestPagination(1);
-            console.log(this.props.computedMatch.params.keyword);
             this.props.requestSearchPhotos(this.props.currentPage , this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
@@ -85,14 +81,12 @@ class SearchResults extends React.Component {
             case 'search_collections' :
                 return this.renderSearchResults();
             case 'photos' :
-                console.log("CALL PHOTOS");
                 return (
                     <CardColumns className="my-5">
                         <PhotosList />
                     </CardColumns>
                 )
             case 'collections' : 
-                console.log("CALL COLLECTIONS");
                 return (
                     <CardColumns className="my-5">
                         <CollectionList />
@@ -104,7 +98,6 @@ class SearchResults extends React.Component {
     }
     
     render() {
-        console.log(this.props.pagingType)
         return (
             <div>
                 <NavElement />

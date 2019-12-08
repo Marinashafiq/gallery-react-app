@@ -30,14 +30,12 @@ class Pagination extends React.Component {
             requestSearchPhotos(nextPage, searchKeyword.keyword);
         }
         else if (pagingType === 'collections') {
-            console.log('collections')
             requestCollection(nextPage);
         }
         else if (pagingType === 'search_collections') {
             requestSearchCollections(nextPage,searchKeyword.keyword);
         }
         else if (pagingType === 'collection-photos') {
-            console.log(pagingType , nextPage , collectionsId);
             requestCollectionPhotos(nextPage, collectionsId);
         }
     }

@@ -5,7 +5,6 @@ import Badge from 'react-bootstrap/Badge';
 const KeywordChip = (props) => {
 
     const handleClick = (key) =>{
-        console.log(key)
         props.searchWithChips(key);
     }
 
