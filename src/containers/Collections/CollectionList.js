@@ -10,7 +10,7 @@ class CollectionList extends React.Component {
     componentDidMount() {
         if(history.location.pathname == '/collections'){
             const { requestCollection , requestPagingType } = this.props ;
-            requestCollection(1);
+            // requestCollection(1);
             requestPagingType('collections')
         }
     }

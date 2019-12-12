@@ -18,7 +18,7 @@ const GalleryCard = (props) => {
     }
 
     function MyVerticallyCenteredModal(props) {
-        console.log(props);
+        // console.log(props);
         return (
           <Modal
             {...props}

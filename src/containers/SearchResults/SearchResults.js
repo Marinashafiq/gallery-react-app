@@ -17,6 +17,7 @@ class SearchResults extends React.Component {
     componentDidMount() {
         console.log(this.props.pagingType);
         if (history.location.pathname !== '/photos' && history.location.pathname !== '/collections') {
+            console.log("HEREEEEEE")
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
@@ -26,7 +27,8 @@ class SearchResults extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword) {
+        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword && (history.location.pathname !== '/photos' && history.location.pathname !== '/collections')) {
+            console.log("FROM UPDATEEE");
             this.props.requestPagination(1);
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
@@ -45,6 +47,7 @@ class SearchResults extends React.Component {
     handleSelect = (key) => {
         this.props.requestPagination(1);
         if (key === 'photos') {
+            console.log("FROM TABSSS");
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }

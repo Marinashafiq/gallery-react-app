@@ -6,7 +6,7 @@ import Search from '../../containers/search/Search';
 const NavElement = () => {
 
     return(
-        <Navbar sticky="top"  bg="dark" variant="dark" collapseOnSelect expand="lg">
+        <Navbar sticky="top"  bg="dark" variant="dark" collapseOnSelect expand="md">
             <Navbar.Brand href="/">Gallery</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
