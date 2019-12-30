@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
+import BrowserRouter from 'react-router-dom/BrowserRouter';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -26,9 +28,12 @@ const options = {
 
 ReactDOM.render(
     <Provider store={store}>
+           {/* <BrowserRouter basename={window.location.pathname || ''}> */}
+
         <AlertProvider template={AlertTemplate} {...options}>
         <App />
         </AlertProvider>
+        {/* </BrowserRouter> */}
     </Provider>,
     document.getElementById('root')
 );
