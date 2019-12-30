@@ -34,3 +34,7 @@ body{
     width: 90%;
     margin: 0 auto;
 }
+
+button:focus{
+    outline: 0;
+}

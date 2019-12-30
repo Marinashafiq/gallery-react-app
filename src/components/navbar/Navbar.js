@@ -2,19 +2,21 @@ import React from 'react' ;
 import {Navbar , Nav , Form , FormControl , Button} from 'react-bootstrap';
 import './Navbar.scss';
 import Navigation from '../../containers/navigation/Navigation'
-
+import Search from '../../containers/search/Search';
 const NavElement = () => {
 
     return(
-        <Navbar sticky="top"  bg="dark" variant="dark">
+        <Navbar sticky="top"  bg="dark" variant="dark" collapseOnSelect expand="md">
             <Navbar.Brand href="/">Gallery</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
                <Navigation />
             </Nav>
             <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-warning"><i className="fa fa-search"></i></Button>
+                <Search />
             </Form>
+            </Navbar.Collapse>
         </Navbar>
     )
 }

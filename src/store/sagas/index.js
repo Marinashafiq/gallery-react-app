@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest , takeEvery } from 'redux-saga/effects';
 import {
     RECEIVE_PHOTOS,
     REQUEST_PHOTOS,
@@ -63,7 +63,6 @@ function* getCollectionPhotos(action) {
     try {
         console.log(action);
         const response = yield call(api.getCollectionPhotos, action.payload.page, action.payload.id);
-        console.log(response);
         yield put({ type: RECEIVE_COLLECTION_PHOTOS, payload: response.data });
     } catch (err) {
         console.log(err);

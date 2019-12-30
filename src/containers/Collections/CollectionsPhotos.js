@@ -13,7 +13,6 @@ import NavElement from '../../components/navbar/Navbar';
 class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
-        console.log("COLLECTIONS PHOTOS");
         const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections , requestPagination } = this.props;
         requestCollectionPhotos(1, this.props.computedMatch.params.id);
         requestCollectionId(this.props.computedMatch.params.id);
@@ -65,7 +64,6 @@ class CollectionsPhotos extends React.Component {
     }
 
     renderRelatedCollections = () => {
-        console.log(this.props.relatedCollections)
         const { relatedCollections } = this.props;
         if (!relatedCollections) {
             return (

@@ -1,11 +1,10 @@
 import React from 'react';
-import './KeywordChip.scss';
 import Badge from 'react-bootstrap/Badge';
+import './KeywordChip.scss';
 
 const KeywordChip = (props) => {
 
     const handleClick = (key) =>{
-        console.log(key)
         props.searchWithChips(key);
     }
 

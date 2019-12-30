@@ -23,7 +23,6 @@ class Search extends React.Component {
 
     componentDidUpdate(prevProps){
         if(prevProps.pagingType !== this.props.pagingType){
-            console.log("CLEAR");
             this.setState({
                 keyword : ""
             })
@@ -31,7 +30,6 @@ class Search extends React.Component {
     }
 
     handleChange = (e) => {
-        console.log(e);
         // const { pagingType , requestPhotos , requestCollection } = this.props ;
         this.setState({
             keyword: e.target.value
@@ -40,31 +38,49 @@ class Search extends React.Component {
             this.setState({
                 keyword: ""
             })
-            // if (pagingType === 'photos' || pagingType === 'search_photos') {
-            //     requestPhotos(1);
-            //     e.target.value = '';
-            // }
-            // else if (pagingType === 'collections' || pagingType === 'search_collections') {
-            //     requestCollection(1);
-            //     e.target.value = '';
-            // }
         }
     }
 
     onSubmit = (e) => {
-        const { pagingType , currentPage , requestSearchPhotos , requestSearchCollections , requestPagination} = this.props ;
-        // requestPagination(1);
-        // requestSearchPhotos(currentPage, this.state.keyword);
-        // requestSearchCollections(currentPage, this.state.keyword);
-        history.push(`/search/${this.state.keyword}`);       
+        this.setState({
+            keyword: e.target.value
+        })
+        if(this.state.keyword){
+            history.push(`/search/${this.state.keyword}`);       
+        }
     }
 
+    onKeypress = (e) =>{
+        if(e.key == 'Enter'){
+            history.push(`/search/${this.state.keyword}`);       
+        }
+    }
+
+    renderSearchButton = () => {
+        if(history.location.pathname == '/'){
+            return(
+                <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5 searchBtn">Search</Button>
+            )
+        }
+        else {
+            return(
+                <Button variant="outline-warning" className="border-raduis-3" onClick={(e) => this.onSubmit(e)}><i className="fa fa-search"></i></Button>
+            )
+        }
+    }
 
     render() {
         return (
-            <div>
-                <div className="d-flex search-input mt-4">
-                    <InputGroup size="lg" className="mr-3">
+            <div className="w-100">
+                <div className={'d-flex ' + (history.location.pathname == '/' ? 'search-input' : '')}>
+                <FormControl 
+                    value = {this.state.keyword || ""}
+                    onChange={e => this.handleChange(e)}
+                    onKeyPress={e => this.onKeypress(e)}
+                    placeholder="Search in Gallery" 
+                    className="mr-2 border-0 shadow border-raduis-3" />
+                    {this.renderSearchButton()}
+                    {/* <InputGroup size="lg" className="mr-3 mt-4">
                         <FormControl
                             value = {this.state.keyword}
                             aria-label="Large"
@@ -74,7 +90,7 @@ class Search extends React.Component {
                             aria-describedby="inputGroup-sizing-sm" />
                     </InputGroup>
 
-                    <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button>
+                    <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5">Search</Button> */}
                 </div>
             </div>
         )

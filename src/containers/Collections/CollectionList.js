@@ -4,14 +4,13 @@ import { requestCollection , requestPagingType} from '../../store/actions';
 import CollectionCard from '../../components/collection-card/CollectionCard';
 import '../search/Search.scss';
 import history from '../../routes/history';
-
+import Loader from '../../components/loader/Loader';
 
 class CollectionList extends React.Component {
     componentDidMount() {
         if(history.location.pathname == '/collections'){
-            console.log("COLLECTIONSSSS")
             const { requestCollection , requestPagingType } = this.props ;
-            requestCollection(1);
+            // requestCollection(1);
             requestPagingType('collections')
         }
     }
@@ -20,7 +19,7 @@ class CollectionList extends React.Component {
         const { collections } = this.props;
         if (!collections) {
             return (
-                <div> Still Loading ... </div>
+               <Loader />
             )
             
         }
