@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestPhotos, requestDownloadPhoto , requestPagingType } from '../../store/actions/index';
+import { requestPhotos, requestDownloadPhoto, requestPagingType } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
 import history from '../../routes/history';
 
 class PhotosList extends React.Component {
     componentDidMount() {
-        if(history.location.pathname == '/photos'){
-            const { requestPhotos , requestPagingType } = this.props ;
+        if (history.location.pathname == `${process.env.PUBLIC_URL}/photos`) {
+            const { requestPhotos, requestPagingType } = this.props;
             requestPhotos(1);
             requestPagingType('photos')
         }
     }
 
     downloadImage = (imageId) => {
-        const { requestDownloadPhoto } = this.props ;
+        const { requestDownloadPhoto } = this.props;
         requestDownloadPhoto(imageId);
     }
 
     renderPhotosList = () => {
         return this.props.photos.map(photo => {
-            const { id , urls , description , likes , user } = photo ;
-            let { created_at } = photo ;
+            const { id, urls, description, likes, user } = photo;
+            let { created_at } = photo;
             created_at = this.convertTime(photo.created_at);
             return (
                 <GalleryCard
@@ -63,4 +63,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { requestPhotos, requestDownloadPhoto , requestPagingType})(PhotosList);
+export default connect(mapStateToProps, { requestPhotos, requestDownloadPhoto, requestPagingType })(PhotosList);

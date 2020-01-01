@@ -4,18 +4,18 @@ import './Navigation.scss';
 import { connect } from 'react-redux';
 import { requestCollection, requestPhotos, requestPagination, requestSearchCollections, requestSearchPhotos } from '../../store/actions';
 import { Link } from "react-router-dom";
-import {Nav} from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 
 class Navigation extends React.Component {
 
     getCollections = () => {
-        const { requestCollection , requestPagination } = this.props ;
+        const { requestCollection, requestPagination } = this.props;
         requestCollection(1);
         requestPagination(1);
     }
 
     getPhotos = () => {
-        const { requestPhotos , requestPagination } = this.props ;
+        const { requestPhotos, requestPagination } = this.props;
         requestPhotos(1);
         requestPagination(1);
     }
@@ -24,8 +24,8 @@ class Navigation extends React.Component {
         const { pagingType } = this.props;
         return (
             <div className="text-white">
-                <Link to="/photos" onClick={this.getPhotos} className={'navLink ' + (this.props.pagingType == 'photos' ? 'text-warning' : 'text-white mx-2')}>Photos</Link>
-                <Link to="/collections" onClick={this.getCollections} className={'navLink '+(this.props.pagingType == 'collections' ? 'text-warning mx-2' : 'text-white mx-2')}>Collections</Link>
+                <Link to={`${process.env.PUBLIC_URL}/photos`} onClick={this.getPhotos} className={'navLink ' + (this.props.pagingType == 'photos' ? 'text-warning' : 'text-white mx-2')}>Photos</Link>
+                <Link to={`${process.env.PUBLIC_URL}/collections`} onClick={this.getCollections} className={'navLink ' + (this.props.pagingType == 'collections' ? 'text-warning mx-2' : 'text-white mx-2')}>Collections</Link>
             </div>
         )
     }

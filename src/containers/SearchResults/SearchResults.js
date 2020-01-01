@@ -16,19 +16,19 @@ class SearchResults extends React.Component {
 
     componentDidMount() {
         console.log(this.props.pagingType);
-        if (history.location.pathname !== '/photos' && history.location.pathname !== '/collections') {
+        if (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`) {
             console.log("HEREEEEEE")
             console.log(this.props.match.params.keyword);
             this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
             this.props.requestPagingType('search_photos');
         }
-        else if (history.location.pathname == '/collections') {
+        else if (history.location.pathname == `${process.env.PUBLIC_URL}/collections`) {
             this.props.requestCollection(this.props.currentPage);
         }
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params.keyword !== this.props.match.params.keyword && (history.location.pathname !== '/photos' && history.location.pathname !== '/collections')) {
+        if (prevProps.match.params.keyword !== this.props.match.params.keyword && (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`)) {
             console.log("FROM UPDATEEE");
             this.props.requestPagination(1);
             this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
