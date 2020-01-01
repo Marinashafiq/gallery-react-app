@@ -4,7 +4,6 @@ import history from './history';
 import Loader from '../components/loader/Loader';
 const Home = lazy(() => import('../containers/Home/Home'));
 const CollectionsPhotos = lazy(() => import('../containers/Collections/CollectionsPhotos'));
-const CollectionList = lazy(() => import('../containers/Collections/CollectionList'));
 const SearchResults = lazy(() => import('../containers/SearchResults/SearchResults'));
 
 export const Routes = (

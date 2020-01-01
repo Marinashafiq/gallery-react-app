@@ -2,7 +2,7 @@
   "name": "gallery-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://marinashafiq.github.io/gallery-react-app",
+  "homepage": "http://Marinashafiq.github.io/gallery-react-app",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.12.0-1",

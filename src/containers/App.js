@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { Routes } from './routes/index';
+import { Routes } from '../routes/index';
 import { Router } from "react-router-dom";
-import history from './routes/history';
+import history from '../routes/history';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router history={history}>{Routes}</Router>

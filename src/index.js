@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
-import App from './App';
+import App from './containers/App';
 import store from './store';
 import './index.css';
 
@@ -21,13 +21,13 @@ const options = {
     transition: transitions.SCALE,
     containerStyle: {
         zIndex: 100
-      }
-  }
+    }
+}
 
 ReactDOM.render(
     <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...options}>
-        <App />
+            <App />
         </AlertProvider>
     </Provider>,
     document.getElementById('root')
