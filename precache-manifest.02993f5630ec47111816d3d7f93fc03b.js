@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cf8b56c4150b45a22b55f3b34c9c094e",
+    "revision": "99b828446e9c7efb8f3bf2dfcf96c4b6",
     "url": "/gallery-react-app/index.html"
   },
   {
@@ -12,15 +12,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gallery-react-app/static/css/5.a15bd2a3.chunk.css"
   },
   {
-    "revision": "84e786ced53857728926",
+    "revision": "ee57183010b1079c0ae6",
     "url": "/gallery-react-app/static/css/6.4abc362b.chunk.css"
   },
   {
-    "revision": "69dd23c217bf8c20c874",
+    "revision": "e5b2971bd542b027673b",
     "url": "/gallery-react-app/static/css/7.5ab18ee3.chunk.css"
   },
   {
-    "revision": "ff906399c512f3b9aa48",
+    "revision": "79e840f574bb4e6b68f0",
     "url": "/gallery-react-app/static/css/main.1257b9da.chunk.css"
   },
   {
@@ -40,20 +40,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gallery-react-app/static/js/5.7ff2e472.chunk.js"
   },
   {
-    "revision": "84e786ced53857728926",
-    "url": "/gallery-react-app/static/js/6.6b2ca57e.chunk.js"
+    "revision": "ee57183010b1079c0ae6",
+    "url": "/gallery-react-app/static/js/6.333a8ec2.chunk.js"
   },
   {
-    "revision": "69dd23c217bf8c20c874",
-    "url": "/gallery-react-app/static/js/7.46cc163b.chunk.js"
+    "revision": "e5b2971bd542b027673b",
+    "url": "/gallery-react-app/static/js/7.bce7eb86.chunk.js"
   },
   {
-    "revision": "ff906399c512f3b9aa48",
-    "url": "/gallery-react-app/static/js/main.9b8367b7.chunk.js"
+    "revision": "79e840f574bb4e6b68f0",
+    "url": "/gallery-react-app/static/js/main.4207637d.chunk.js"
   },
   {
-    "revision": "cda7b00ad0c83936878c",
-    "url": "/gallery-react-app/static/js/runtime-main.1461544b.js"
+    "revision": "43876264feba420a23fa",
+    "url": "/gallery-react-app/static/js/runtime-main.2864504c.js"
   },
   {
     "revision": "e05090b757da107c30910405cdf6154a",
