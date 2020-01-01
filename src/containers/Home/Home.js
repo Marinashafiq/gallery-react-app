@@ -11,17 +11,18 @@ import history from '../../routes/history';
 class Home extends React.Component {
 
     searchWithChips = (keyword) => {
-        history.push(`/search/${keyword}`);       
+        console.log(process.env.PUBLIC_URL)
+        history.push(`${process.env.PUBLIC_URL}/search/${keyword}`);
     }
 
     renderChips = () => {
-        const keywords = ['love' , 'wallpaper' , 'Nature' , 'Current Events' , 'Film' , 'Dark' , 'Black & White' , 'Travel' , 'fashion' , 'Kids']
+        const keywords = ['love', 'wallpaper', 'Nature', 'Current Events', 'Film', 'Dark', 'Black & White', 'Travel', 'fashion', 'Kids']
         return keywords.map(keyword => {
-            return(
-                <KeywordChip 
-                    key={keyword} 
+            return (
+                <KeywordChip
+                    key={keyword}
                     name={keyword}
-                    searchWithChips={this.searchWithChips}/>
+                    searchWithChips={this.searchWithChips} />
             )
         })
     }

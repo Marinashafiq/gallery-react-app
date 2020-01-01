@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Router, Switch } from "react-router-dom";
+import { Router, Switch, Route, BrowserRouter } from "react-router-dom";
 import history from './history';
 import Loader from '../components/loader/Loader';
 const Home = lazy(() => import('../containers/Home/Home'));
@@ -8,16 +8,19 @@ const SearchResults = lazy(() => import('../containers/SearchResults/SearchResul
 
 export const Routes = (
     <Suspense fallback={<Loader />}>
-        <Router history={history}>
-            <Switch>
-                <Home path="/" exact />
-                <SearchResults path="/search/:keyword" exact />
-                <SearchResults path="/photos" exact />
-                <SearchResults path="/collections" exact />
-                <CollectionsPhotos path="/collections/:id" exact />
-                {/* <CollectionList path="/collections/:keyword" exact /> */}
-            </Switch>
-        </Router>
+        {console.log("Test routes")}
+        {/* <Router history={history}> */}
+        <Switch>
+            {console.log(process.env.PUBLIC_URL)}
+
+            <Route path={process.env.PUBLIC_URL + '/'} component={Home} exact />
+            <Route path={process.env.PUBLIC_URL + "/search/:keyword"} component={SearchResults} exact />
+            <Route path={process.env.PUBLIC_URL + "/photos"} component={SearchResults} exact />
+            <Route path={process.env.PUBLIC_URL + "/collections"} exact component={SearchResults} />
+            <Route path={process.env.PUBLIC_URL + "/collections/:id"} exact component={CollectionsPhotos} />
+            {/* <CollectionList path="/collections/:keyword" exact /> */}
+        </Switch>
+        {/* </Router> */}
     </Suspense>
 )
 

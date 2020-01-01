@@ -18,7 +18,8 @@ class SearchResults extends React.Component {
         console.log(this.props.pagingType);
         if (history.location.pathname !== '/photos' && history.location.pathname !== '/collections') {
             console.log("HEREEEEEE")
-            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
+            console.log(this.props.match.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
             this.props.requestPagingType('search_photos');
         }
         else if (history.location.pathname == '/collections') {
@@ -27,10 +28,10 @@ class SearchResults extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword && (history.location.pathname !== '/photos' && history.location.pathname !== '/collections')) {
+        if (prevProps.match.params.keyword !== this.props.match.params.keyword && (history.location.pathname !== '/photos' && history.location.pathname !== '/collections')) {
             console.log("FROM UPDATEEE");
             this.props.requestPagination(1);
-            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
             this.props.requestPagingType('search_photos');
         }
     }
@@ -48,11 +49,11 @@ class SearchResults extends React.Component {
         this.props.requestPagination(1);
         if (key === 'photos') {
             console.log("FROM TABSSS");
-            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
             this.props.requestPagingType('search_photos');
         }
         else {
-            this.props.requestSearchCollections(this.props.currentPage, this.props.computedMatch.params.keyword);
+            this.props.requestSearchCollections(this.props.currentPage, this.props.match.params.keyword);
             this.props.requestPagingType('search_collections');
 
         }
