@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a8f2eec22d84826380ccac317a802d4c",
+    "revision": "d4ef1bc940bb42a5a15435ba36a789dd",
     "url": "/gallery-react-app/index.html"
   },
   {
@@ -8,19 +8,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gallery-react-app/static/css/3.98911b94.chunk.css"
   },
   {
-    "revision": "210080fb60bd2d425182",
+    "revision": "e0ff50f5900d477bc21c",
     "url": "/gallery-react-app/static/css/5.a15bd2a3.chunk.css"
   },
   {
-    "revision": "678bafd77449c98e39f8",
+    "revision": "914210d57d7aac09ba65",
     "url": "/gallery-react-app/static/css/6.4abc362b.chunk.css"
   },
   {
-    "revision": "35e74700659070494eac",
+    "revision": "9238f7f6ea4e937731b6",
     "url": "/gallery-react-app/static/css/7.5ab18ee3.chunk.css"
   },
   {
-    "revision": "d64f2909c898a9139463",
+    "revision": "ae1e8b472866f8a4e1ad",
     "url": "/gallery-react-app/static/css/main.1257b9da.chunk.css"
   },
   {
@@ -36,24 +36,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gallery-react-app/static/js/4.ac37f0ab.chunk.js"
   },
   {
-    "revision": "210080fb60bd2d425182",
-    "url": "/gallery-react-app/static/js/5.081bfec3.chunk.js"
+    "revision": "e0ff50f5900d477bc21c",
+    "url": "/gallery-react-app/static/js/5.46618d52.chunk.js"
   },
   {
-    "revision": "678bafd77449c98e39f8",
-    "url": "/gallery-react-app/static/js/6.6ee7f21d.chunk.js"
+    "revision": "914210d57d7aac09ba65",
+    "url": "/gallery-react-app/static/js/6.0346ea14.chunk.js"
   },
   {
-    "revision": "35e74700659070494eac",
-    "url": "/gallery-react-app/static/js/7.bcbb120f.chunk.js"
+    "revision": "9238f7f6ea4e937731b6",
+    "url": "/gallery-react-app/static/js/7.9c88034e.chunk.js"
   },
   {
-    "revision": "d64f2909c898a9139463",
-    "url": "/gallery-react-app/static/js/main.72f5913a.chunk.js"
+    "revision": "ae1e8b472866f8a4e1ad",
+    "url": "/gallery-react-app/static/js/main.5b931662.chunk.js"
   },
   {
-    "revision": "5edf89c8508d627c3e8b",
-    "url": "/gallery-react-app/static/js/runtime-main.0a5bfb43.js"
+    "revision": "2a6a9958f60f92a81754",
+    "url": "/gallery-react-app/static/js/runtime-main.7c5652d1.js"
   },
   {
     "revision": "e05090b757da107c30910405cdf6154a",
