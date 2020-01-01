@@ -13,11 +13,11 @@ export const Routes = (
         <Switch>
             {console.log(process.env.PUBLIC_URL)}
 
-            <Route path={process.env.PUBLIC_URL + '/'} component={Home} exact />
-            <Route path={process.env.PUBLIC_URL + "/search/:keyword"} component={SearchResults} exact />
-            <Route path={process.env.PUBLIC_URL + "/photos"} component={SearchResults} exact />
-            <Route path={process.env.PUBLIC_URL + "/collections"} exact component={SearchResults} />
-            <Route path={process.env.PUBLIC_URL + "/collections/:id"} exact component={CollectionsPhotos} />
+            <Home path={process.env.PUBLIC_URL + '/'} exact />
+            <SearchResults path={process.env.PUBLIC_URL + "/search/:keyword"} exact />
+            <SearchResults path={process.env.PUBLIC_URL + "/photos"} exact />
+            <SearchResults path={process.env.PUBLIC_URL + "/collections"} exact />
+            <CollectionsPhotos path={process.env.PUBLIC_URL + "/collections/:id"} exact />
             {/* <CollectionList path="/collections/:keyword" exact /> */}
         </Switch>
         {/* </Router> */}

@@ -14,9 +14,9 @@ class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
         const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections , requestPagination } = this.props;
-        requestCollectionPhotos(1, this.props.match.params.id);
-        requestCollectionId(this.props.match.params.id);
-        requestRelatedCollections(1, this.props.match.params.id);
+        requestCollectionPhotos(1, this.props.computedMatch.params.id);
+        requestCollectionId(this.props.computedMatch.params.id);
+        requestRelatedCollections(1, this.props.computedMatch.params.id);
         requestPagination(1);
     }
 
@@ -28,12 +28,12 @@ class CollectionsPhotos extends React.Component {
     componentDidUpdate(prevProps) {
         const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections, requestPagination } = this.props;
         if (
-            prevProps.match.params.id !== this.props.match.params.id
+            prevProps.computedMatch.params.id !== this.props.computedMatch.params.id
         ) {
-            requestCollectionPhotos(1, this.props.match.params.id);
+            requestCollectionPhotos(1, this.props.computedMatch.params.id);
             requestPagination(1);
-            requestCollectionId(this.props.match.params.id);
-            requestRelatedCollections(1, this.props.match.params.id);
+            requestCollectionId(this.props.computedMatch.params.id);
+            requestRelatedCollections(1, this.props.computedMatch.params.id);
         }
     }
 

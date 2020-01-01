@@ -16,10 +16,13 @@ class SearchResults extends React.Component {
 
     componentDidMount() {
         console.log(this.props.pagingType);
+        console.log(history.location.pathname);
+        console.log(history);
+
         if (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`) {
             console.log("HEREEEEEE")
-            console.log(this.props.match.params.keyword);
-            this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
+            console.log(this.props.computedMatch.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
         else if (history.location.pathname == `${process.env.PUBLIC_URL}/collections`) {
@@ -28,10 +31,10 @@ class SearchResults extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params.keyword !== this.props.match.params.keyword && (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`)) {
+        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword && (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`)) {
             console.log("FROM UPDATEEE");
             this.props.requestPagination(1);
-            this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
     }
@@ -49,11 +52,11 @@ class SearchResults extends React.Component {
         this.props.requestPagination(1);
         if (key === 'photos') {
             console.log("FROM TABSSS");
-            this.props.requestSearchPhotos(this.props.currentPage, this.props.match.params.keyword);
+            this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
         else {
-            this.props.requestSearchCollections(this.props.currentPage, this.props.match.params.keyword);
+            this.props.requestSearchCollections(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_collections');
 
         }

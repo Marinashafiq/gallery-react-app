@@ -40,13 +40,16 @@ const GalleryCard = (props) => {
 
     return (
         <div>
-            <Card className="border-0 shadow mb-3" onClick={() => setModalShow(true)}>
+            <Card className="border-0 shadow mb-3">
                 <div className="zoom-in-image">
-                <LazyImage               
-                    placeholder={"https://cdn.dribbble.com/users/2046015/screenshots/6015680/08_404.gif"}
+                <LazyImage     
+                    placeholder={"https://cdn.dribbble.com/users/1373613/screenshots/5436349/plexus____-.gif"}
                     src={props.url}
                 >
-                    {(src, loading, isVisible) =><Card.Img variant="top"  src={src} />
+                    {(src, loading, isVisible) =><Card.Img 
+                     onClick={() => setModalShow(true)}          
+                     variant="top" 
+                     src={src} />
 }
                 </LazyImage>
                 </div>
