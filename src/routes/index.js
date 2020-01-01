@@ -7,22 +7,20 @@ const CollectionsPhotos = lazy(() => import('../containers/Collections/Collectio
 const CollectionList = lazy(() => import('../containers/Collections/CollectionList'));
 const SearchResults = lazy(() => import('../containers/SearchResults/SearchResults'));
 
-export const Routes = () => {
-    return (
-        <Router history={history}>
-            <div>
-                <Suspense fallback={<Loader />}>
-                    <Switch>
-                        <Home path="/" exact />
-                        <SearchResults path="/search/:keyword" exact />
-                        <SearchResults path="/photos" exact />
-                        <SearchResults path="/collections" exact />
-                        <CollectionsPhotos path="/collections/:id" exact />
-                        {/* <CollectionList path="/collections/:keyword" exact /> */}
-                    </Switch>
-                </Suspense>
-            </div>
-        </Router>
-    )
-}
+export const Routes = (
+    // <Router history={history}>
+    <div>
+        <Suspense fallback={<Loader />}>
+            <Switch>
+                <Home path="/" exact />
+                <SearchResults path="/search/:keyword" exact />
+                <SearchResults path="/photos" exact />
+                <SearchResults path="/collections" exact />
+                <CollectionsPhotos path="/collections/:id" exact />
+                {/* <CollectionList path="/collections/:keyword" exact /> */}
+            </Switch>
+        </Suspense>
+    </div>
+    // </Router>
+)
 
