@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2e5c73d61772a38f32dad4249c3de599",
+    "revision": "96a6c825bd1ec62b8eaae343d35ee660",
     "url": "/gallery-react-app/index.html"
   },
   {
-    "revision": "0eac1c7dc925f6a20f6a",
+    "revision": "77e8d8c307dec50a2f16",
     "url": "/gallery-react-app/static/css/3.98911b94.chunk.css"
   },
   {
@@ -12,24 +12,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gallery-react-app/static/css/5.a15bd2a3.chunk.css"
   },
   {
-    "revision": "fd51b5845c351b9624c5",
+    "revision": "14a00aa4d1b4403318c6",
     "url": "/gallery-react-app/static/css/6.4abc362b.chunk.css"
   },
   {
-    "revision": "60e460bdfcb508ae1c45",
+    "revision": "5e254170832a01750c44",
     "url": "/gallery-react-app/static/css/7.5ab18ee3.chunk.css"
   },
   {
-    "revision": "79e840f574bb4e6b68f0",
+    "revision": "843615a339be177ef83d",
     "url": "/gallery-react-app/static/css/main.1257b9da.chunk.css"
   },
   {
-    "revision": "2f1c0947298d741f7f63",
-    "url": "/gallery-react-app/static/js/0.b39c6af1.chunk.js"
+    "revision": "030d493040c2f4fa7cf4",
+    "url": "/gallery-react-app/static/js/0.a4ae0353.chunk.js"
   },
   {
-    "revision": "0eac1c7dc925f6a20f6a",
-    "url": "/gallery-react-app/static/js/3.cc86ef21.chunk.js"
+    "revision": "77e8d8c307dec50a2f16",
+    "url": "/gallery-react-app/static/js/3.72753542.chunk.js"
   },
   {
     "revision": "165c01ecd79f95703071",
@@ -40,20 +40,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gallery-react-app/static/js/5.7ff2e472.chunk.js"
   },
   {
-    "revision": "fd51b5845c351b9624c5",
-    "url": "/gallery-react-app/static/js/6.0ead3437.chunk.js"
+    "revision": "14a00aa4d1b4403318c6",
+    "url": "/gallery-react-app/static/js/6.6dfa784f.chunk.js"
   },
   {
-    "revision": "60e460bdfcb508ae1c45",
-    "url": "/gallery-react-app/static/js/7.da2f0c62.chunk.js"
+    "revision": "5e254170832a01750c44",
+    "url": "/gallery-react-app/static/js/7.68e3d20c.chunk.js"
   },
   {
-    "revision": "79e840f574bb4e6b68f0",
-    "url": "/gallery-react-app/static/js/main.4207637d.chunk.js"
+    "revision": "843615a339be177ef83d",
+    "url": "/gallery-react-app/static/js/main.c3c9f53f.chunk.js"
   },
   {
-    "revision": "d850d3c6e7e0d4295a32",
-    "url": "/gallery-react-app/static/js/runtime-main.4b9b24a7.js"
+    "revision": "7af8fea4deb22523e2b4",
+    "url": "/gallery-react-app/static/js/runtime-main.0ba97ed2.js"
   },
   {
     "revision": "e05090b757da107c30910405cdf6154a",
