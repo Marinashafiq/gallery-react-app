@@ -7,9 +7,9 @@ import LogRocket from 'logrocket';
 
 LogRocket.init('avom2d/test');
 
-LogRocket.identify('1234', {
-  name: 'Marina Magdy',
-  email: 'marinashafiq89@gmail.com',
+LogRocket.identify('23659', {
+  name: 'Michael',
+  email: 'michael@gmail.com',
 });
 
 const App = () => {
