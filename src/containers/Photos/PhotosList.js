@@ -19,17 +19,16 @@ class PhotosList extends React.Component {
     }
 
     renderPhotosList = () => {
-        return this.props.photos.map(photo => {
-            const { id, urls, description, likes, user } = photo;
-            let { created_at } = photo;
-            created_at = this.convertTime(photo.created_at);
+        const photos = null
+        return photos.map(photo => {
+            const { id, urls, description, likes, user , created_at} = photo;
             return (
                 <GalleryCard
                     id={id}
                     key={id}
                     url={urls.full}
                     name={id}
-                    created_at={created_at}
+                    created_at={this.convertTime(created_at)}
                     description={description}
                     likes={likes}
                     user={user}
