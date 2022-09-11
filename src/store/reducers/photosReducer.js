@@ -3,7 +3,7 @@ import {
     RECEIVE_SEARCH_PHOTOS,
 } from '../actions/types';
 
-export default (state = {}, action) => {
+export default function photosReducer (state = {}, action) {
     switch (action.type) {
         case RECEIVE_PHOTOS:
             return { ...state, ...action.payload };

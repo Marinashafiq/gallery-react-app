@@ -2,7 +2,7 @@ import {
     RECEIVE_RELATED_COLLECTIONS
 } from '../actions/types';
 
-export default (state = {}, action) => {
+export default function relatedCollections (state = {}, action) {
     switch (action.type) {
         case RECEIVE_RELATED_COLLECTIONS:
             return { ...state, ...action.payload };

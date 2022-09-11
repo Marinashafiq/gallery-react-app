@@ -6,7 +6,7 @@ import history from '../../routes/history';
 
 class PhotosList extends React.Component {
     componentDidMount() {
-        if (history.location.pathname == `${process.env.PUBLIC_URL}/photos`) {
+        if (history.location.pathname === `/photos`) {
             const { requestPhotos, requestPagingType } = this.props;
             requestPhotos(1);
             requestPagingType('photos')

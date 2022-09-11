@@ -3,7 +3,7 @@ import {
     REQUEST_SEARCH_COLLECTIONS
 } from '../actions/types';
 
-export default (state = {}, action) => {
+export default function searchKeywordReducer (state = {}, action) {
     switch (action.type) {
         case REQUEST_SEARCH_PHOTOS:
             return { ...action.payload };

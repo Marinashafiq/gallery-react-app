@@ -3,7 +3,7 @@ import {
     RECEIVE_SEARCH_COLLECTIONS
 } from '../actions/types';
 
-export default (state = {}, action) => {
+export default function collectionListReducer(state = {}, action) {
     switch (action.type) {
         case RECEIVE_COLLECTIONS:
             return { ...state, ...action.payload };

@@ -10,29 +10,21 @@ import Pagination from '../pagination/Pagination';
 import NavElement from '../../components/navbar/Navbar';
 import { Tabs, Tab } from 'react-bootstrap'
 import './SearchResults.scss';
-import { request } from 'http';
 
 class SearchResults extends React.Component {
 
     componentDidMount() {
-        console.log(this.props.pagingType);
-        console.log(history.location.pathname);
-        console.log(history);
-
-        if (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`) {
-            console.log("HEREEEEEE")
-            console.log(this.props.computedMatch.params.keyword);
+        if (history.location.pathname !== `/photos` && history.location.pathname !== `/collections`) {
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }
-        else if (history.location.pathname == `${process.env.PUBLIC_URL}/collections`) {
+        else if (history.location.pathname === `/collections`) {
             this.props.requestCollection(this.props.currentPage);
         }
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword && (history.location.pathname !== `${process.env.PUBLIC_URL}/photos` && history.location.pathname !== `${process.env.PUBLIC_URL}/collections`)) {
-            console.log("FROM UPDATEEE");
+        if (prevProps.computedMatch.params.keyword !== this.props.computedMatch.params.keyword && (history.location.pathname !== `/photos` && history.location.pathname !== `/collections`)) {
             this.props.requestPagination(1);
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
@@ -51,7 +43,6 @@ class SearchResults extends React.Component {
     handleSelect = (key) => {
         this.props.requestPagination(1);
         if (key === 'photos') {
-            console.log("FROM TABSSS");
             this.props.requestSearchPhotos(this.props.currentPage, this.props.computedMatch.params.keyword);
             this.props.requestPagingType('search_photos');
         }

@@ -2,18 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { requestCollectionPhotos, requestCollectionId, requestDownloadPhoto, requestRelatedCollections, requestPagination } from '../../store/actions/index';
 import GalleryCard from '../../components/card/GalleryCard';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import CardColumns from 'react-bootstrap/CardColumns';
 import Pagination from '../pagination/Pagination';
 import CollectionCard from '../../components/collection-card/CollectionCard';
-import CardDeck from 'react-bootstrap/CardDeck';
-import Navigation from '../../containers/navigation/Navigation';
 import NavElement from '../../components/navbar/Navbar';
 
 class CollectionsPhotos extends React.Component {
 
     componentDidMount() {
-        const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections , requestPagination } = this.props;
+        const { requestCollectionPhotos, requestCollectionId, requestRelatedCollections, requestPagination } = this.props;
         requestCollectionPhotos(1, this.props.computedMatch.params.id);
         requestCollectionId(this.props.computedMatch.params.id);
         requestRelatedCollections(1, this.props.computedMatch.params.id);
@@ -103,8 +101,8 @@ class CollectionsPhotos extends React.Component {
                 <div className="photosContainer my-5">
                     <Row>
                         <Col md={3}>
-                        <h5 className="text-warning mb-4">Related Collections</h5>
-                            <Row>                               
+                            <h5 className="text-warning mb-4">Related Collections</h5>
+                            <Row>
                                 {this.renderRelatedCollections()}
                             </Row>
                         </Col>
@@ -119,8 +117,8 @@ class CollectionsPhotos extends React.Component {
                                     Scott Lorenzo
                                 </footer>
                             </blockquote>
-                            
-                            
+
+
                             <CardColumns className="my-5">
                                 {this.renderPhotosList()}
                             </CardColumns>

@@ -16,11 +16,11 @@ const CollectionCard = (props) => {
 
     return (
         <div>
-            <Link to={`${process.env.PUBLIC_URL}/collections/${props.id}`} >
+            <Link to={`/collections/${props.id}`}>
                 <Card className="border-0 shadow mb-3">
                     <Container>
                         <Row>
-                            {previewImages}
+                            {previewddImages}
                         </Row>
                     </Container>
                     <Card.Body>

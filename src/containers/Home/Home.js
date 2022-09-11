@@ -11,8 +11,7 @@ import history from '../../routes/history';
 class Home extends React.Component {
 
     searchWithChips = (keyword) => {
-        console.log(process.env.PUBLIC_URL)
-        history.push(`${process.env.PUBLIC_URL}/search/${keyword}`);
+        history.push(`/search/${keyword}`);
     }
 
     renderChips = () => {

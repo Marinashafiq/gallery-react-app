@@ -12,6 +12,7 @@ const getRelatedCollections = async (page_number = 1, id) => await galleryURL.ge
 const downloadImages = async (id) => await galleryURL.get(`/photos/${id}/download`, { handlerEnabled });
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { 
     getPhotos, 
     getSearchPhotos, 

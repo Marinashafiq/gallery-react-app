@@ -8,8 +8,8 @@ import Loader from '../../components/loader/Loader';
 
 class CollectionList extends React.Component {
     componentDidMount() {
-        if (history.location.pathname == `${process.env.PUBLIC_URL}/collections`) {
-            const { requestCollection, requestPagingType } = this.props;
+        if (history.location.pathname === `/collections`) {
+            const {  requestPagingType } = this.props;
             // requestCollection(1);
             requestPagingType('collections')
         }

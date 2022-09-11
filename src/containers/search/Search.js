@@ -1,5 +1,4 @@
 import React from 'react';
-import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import './Search.scss';
@@ -31,7 +30,6 @@ class Search extends React.Component {
     }
 
     handleChange = (e) => {
-        // const { pagingType , requestPhotos , requestCollection } = this.props ;
         this.setState({
             keyword: e.target.value
         })
@@ -47,20 +45,18 @@ class Search extends React.Component {
             keyword: e.target.value
         })
         if (this.state.keyword) {
-            console.log(process.env.PUBLIC_URL)
-            history.push(`${process.env.PUBLIC_URL}/search/${this.state.keyword}`);
+            history.push(`/search/${this.state.keyword}`);
         }
     }
 
     onKeypress = (e) => {
-        if (e.key == 'Enter') {
-            console.log(process.env.PUBLIC_URL);
-            history.push(`${process.env.PUBLIC_URL}/search/${this.state.keyword}`);
+        if (e.key === 'Enter') {
+            history.push(`/search/${this.state.keyword}`);
         }
     }
 
     renderSearchButton = () => {
-        if (history.location.pathname == '/') {
+        if (history.location.pathname === '/') {
             return (
                 <Button variant="warning" onClick={(e) => this.onSubmit(e)} className="border-raduis-3 text-white font-weight-bold px-5 searchBtn">Search</Button>
             )
@@ -75,7 +71,7 @@ class Search extends React.Component {
     render() {
         return (
             <div className="w-100">
-                <div className={'d-flex ' + (history.location.pathname == '/' ? 'search-input' : '')}>
+                <div className={'d-flex ' + (history.location.pathname === '/' ? 'search-input' : '')}>
                     <FormControl
                         value={this.state.keyword || ""}
                         onChange={e => this.handleChange(e)}

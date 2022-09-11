@@ -6,7 +6,7 @@ import {
     RECEIVE_COLLECTION_PHOTOS
 } from '../actions/types';
 
-export default (pagingType = 'search_photos', action) => {
+export default function pagingTypeReducer (pagingType = 'search_photos', action) {
     switch (action.type) {
         case RECEIVE_PHOTOS:
             return 'photos';

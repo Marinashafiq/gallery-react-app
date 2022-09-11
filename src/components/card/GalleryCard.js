@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltDown ,faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useAlert } from 'react-alert'
 import LazyImage from "react-lazy-progressive-image";
-import Loader from '../loader/Loader';
-import {Modal , ModalDialog  , ModalHeader  , ModalTitle  , ModalBody ,ModalFooter , Button } from 'react-bootstrap'
+import {Modal } from 'react-bootstrap'
 import './GalleryCard.scss';
 
 const GalleryCard = (props) => {
@@ -18,7 +17,6 @@ const GalleryCard = (props) => {
     }
 
     function MyVerticallyCenteredModal(props) {
-        // console.log(props);
         return (
           <Modal
             {...props}

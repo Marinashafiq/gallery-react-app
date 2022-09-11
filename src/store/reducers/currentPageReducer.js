@@ -1,4 +1,4 @@
 
-export default  (currentPage = 1, action) => {
+export default function currentPageReducer (currentPage = 1, action) {
   return action.type === 'REQUEST_PAGINATION' ? action.payload : currentPage
 }
