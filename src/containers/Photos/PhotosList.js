@@ -19,8 +19,7 @@ class PhotosList extends React.Component {
     }
 
     renderPhotosList = () => {
-        const photos = null
-        return photos.map(photo => {
+        return this.props.photos.map(photo => {
             const { id, urls, description, likes, user , created_at} = photo;
             return (
                 <GalleryCard
