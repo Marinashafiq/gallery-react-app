@@ -20,7 +20,7 @@ const CollectionCard = (props) => {
                 <Card className="border-0 shadow mb-3">
                     <Container>
                         <Row>
-                            {previewddImages}
+                            {previewImages}
                         </Row>
                     </Container>
                     <Card.Body>

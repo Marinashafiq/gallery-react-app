@@ -2,10 +2,10 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltDown ,faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faLongArrowAltDown, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useAlert } from 'react-alert'
 import LazyImage from "react-lazy-progressive-image";
-import {Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import './GalleryCard.scss';
 
 const GalleryCard = (props) => {
@@ -18,38 +18,38 @@ const GalleryCard = (props) => {
 
     function MyVerticallyCenteredModal(props) {
         return (
-          <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter">
-                {/* <FontAwesomeIcon onClick={download} icon={faLongArrowAltDown} className="text-warning downloadIcon"/> */}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="p-0">
-                <div className="backgroundImg" style={{ backgroundImage: 'url(' + props.imageurl + ')' }}> </div>
-            </Modal.Body>
-          </Modal>
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        {/* <FontAwesomeIcon onClick={download} icon={faLongArrowAltDown} className="text-warning downloadIcon"/> */}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="p-0">
+                    <div className="backgroundImg" style={{ backgroundImage: 'url(' + props.imageurl + ')' }}> </div>
+                </Modal.Body>
+            </Modal>
         );
-      }
+    }
 
     return (
         <div>
             <Card className="border-0 shadow mb-3">
                 <div className="zoom-in-image">
-                <LazyImage     
-                    placeholder={"https://cdn.dribbble.com/users/1373613/screenshots/5436349/plexus____-.gif"}
-                    src={props.url}
-                >
-                    {(src, loading, isVisible) =><Card.Img 
-                     onClick={() => setModalShow(true)}          
-                     variant="top" 
-                     src={src} />
-}
-                </LazyImage>
+                    <LazyImage
+                        placeholder={"https://cdn.dribbble.com/users/1373613/screenshots/5436349/plexus____-.gif"}
+                        src={props.url}
+                    >
+                        {(src, loading, isVisible) => <Card.Img
+                            onClick={() => setModalShow(true)}
+                            variant="top"
+                            src={src} />
+                        }
+                    </LazyImage>
                 </div>
                 <Card.Body>
                     <Card.Title className="d-flex justify-content-between">
@@ -57,7 +57,7 @@ const GalleryCard = (props) => {
                             <Image src={props.user.profile_image.small} roundedCircle />
                             <small className="mx-2">{props.user.name}</small>
                         </div>
-                    <FontAwesomeIcon onClick={download} icon={faLongArrowAltDown} className="text-warning downloadIcon"/>
+                        <FontAwesomeIcon onClick={download} icon={faLongArrowAltDown} className="text-warning downloadIcon" />
                     </Card.Title>
                     <Card.Text>
                         {props.description}
@@ -66,7 +66,7 @@ const GalleryCard = (props) => {
                 <Card.Footer className="d-flex justify-content-between">
                     <small className="text-muted">{props.created_at}</small>
                     <small className="text-muted">
-                        <FontAwesomeIcon icon={faHeart} className="mr-1"/>
+                        <FontAwesomeIcon icon={faHeart} className="mr-1" />
                         {props.likes}
                     </small>
                 </Card.Footer>
@@ -75,7 +75,7 @@ const GalleryCard = (props) => {
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                imageurl = {props.url}
+                imageurl={props.url}
             />
         </div>
     )
